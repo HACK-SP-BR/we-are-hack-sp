@@ -179,7 +179,7 @@ export default function HackSPPage() {
               <Globe className="icon" />
               {lang === "pt" ? "EN" : "PT"}
             </button>
-            <button className="btn btn-primary">{t.hero.cta}</button>
+            <a href="https://forms.fillout.com/t/sXW7gt9yeBus" className="btn btn-primary">{t.hero.cta}</a>
           </div>
         </div>
       </nav>
@@ -197,10 +197,10 @@ export default function HackSPPage() {
           <h1 className="hero-title">{t.hero.title}</h1>
           <p className="hero-subtitle">{t.hero.subtitle}</p>
           <div className="hero-buttons">
-            <button className="btn btn-primary btn-lg">
+            <a href="https://forms.fillout.com/t/sXW7gt9yeBus" className="btn btn-primary btn-lg">
               {t.hero.cta}
               <ArrowRight className="icon" />
-            </button>
+            </a>
             <a href="#about" className="btn btn-outline btn-lg">{t.hero.learn}</a>
           </div>
         </div>
@@ -264,7 +264,7 @@ export default function HackSPPage() {
                   </div>
                 </div>
                 <p className="event-description">{t.events.coming}</p>
-                <a href="" className="btn btn-primary btn-full">
+                <a href="https://forms.fillout.com/t/sXW7gt9yeBus" className="btn btn-primary btn-full">
                   {t.events.register}
                   <ArrowRight className="icon" />
                 </a>
@@ -290,7 +290,7 @@ export default function HackSPPage() {
           <p className="section-text" style={{ marginBottom: "3rem" }}>
             {t.cta.description}
           </p>
-          <a href="" className="btn btn-primary btn-lg">
+          <a href="https://forms.fillout.com/t/sXW7gt9yeBus" className="btn btn-primary btn-lg">
             {t.cta.button}
             <ArrowRight className="icon" />
           </a>
