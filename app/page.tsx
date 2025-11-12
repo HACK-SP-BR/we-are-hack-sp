@@ -302,9 +302,6 @@ export default function HackSPPage() {
           <div className="footer-grid">
             <div className="footer-section">
               <div className="logo-container" style={{ marginBottom: "1rem" }}>
-                <div className="logo-icon">
-                  <Code2 className="icon-lg icon-white" />
-                </div>
                 <span className="logo-text">
                   Hack <span className="logo-highlight">SP</span>
                 </span>

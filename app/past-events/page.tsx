@@ -170,9 +170,6 @@ return (
       <footer className="footer">
         <div className="container text-center">
           <div className="logo-container" style={{ justifyContent: "center", marginBottom: "1rem" }}>
-            <div className="logo-icon">
-              <Code2 className="icon-lg icon-white" />
-            </div>
             <span className="logo-text">
               Hack <span className="logo-highlight">SP</span>
             </span>
