@@ -164,15 +164,6 @@ interface HackSPLayoutProps {
 
 export function HackSPLayout({ render }: HackSPLayoutProps) {
   const [lang, setLang] = useState<Lang>("pt")
-  const [isDarkMode, setIsDarkMode] = useState(true)
-
-  useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add("dark-mode")
-    } else {
-      document.body.classList.remove("dark-mode")
-    }
-  }, [isDarkMode])
 
   const t = content[lang]
 
@@ -203,13 +194,6 @@ export function HackSPLayout({ render }: HackSPLayoutProps) {
           </div>
 
           <div className="nav-actions">
-            <button
-              className="theme-toggle"
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              aria-label="Toggle theme"
-            >
-              {isDarkMode ? <Sun className="icon" /> : <Moon className="icon" />}
-            </button>
             <button
               className="btn btn-ghost"
               onClick={() => setLang(lang === "pt" ? "en" : "pt")}
