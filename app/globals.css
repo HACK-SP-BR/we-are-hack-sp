@@ -5,14 +5,14 @@
 
 :root {
   --color-red: #e30613;
-  --color-black: #000000;
+  --color-black: #1F2933;
   --color-white: #ffffff;
   --color-bg-light: #ffffff;
   --color-bg-light-alt: #f5f5f5;
   --color-text-light: #1a1a1a;
   --color-text-muted-light: #666666;
   --color-border-light: #e0e0e0;
-  --color-bg-dark: #000000;
+  --color-bg-dark: #1F2933;
   --color-bg-dark-alt: #1a1a1a;
   --color-text-dark: #ffffff;
   --color-text-muted-dark: #a0a0a0;
