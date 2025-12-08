@@ -14,6 +14,8 @@ import {
   ArrowRight,
   Sun,
   Moon,
+  Video,
+  ExternalLink,
 } from "lucide-react"
 import Link from "next/link"
 
@@ -71,6 +73,29 @@ export default function HackSPPage() {
         coming: "Janeiro 2026",
         viewPast: "Ver Eventos Passados",
       },
+      pastEvents: {
+        title: "Eventos Passados",
+        subtitle: "Celebrando nossa jornada e as incríveis experiências que criamos juntos",
+        participants: "Participantes",
+        projects: "Projetos",
+        officialVideo: "Vídeo Oficial",
+        website: "Site do Evento",
+        events: [
+          {
+            name: "Daydream São Paulo por Hack SP",
+            date: "Setembro 2025",
+            location:
+              "Instituto de Matemática, Estatística e Ciência da Computação da Universidade de São Paulo, São Paulo, SP",
+            participants: 12,
+            projects: 3,
+            description:
+              "Em parceria com USPCodeLab e Hack Club, fizemos o Daydream São Paulo, parte de uma rede de hackathons simultâneos ao redor do globo. Recebemos João Terra (Fundação Estudar) e Rodrigo Terron.",
+            highlights: ["Game Jam", "Workshops"],
+            videoUrl: "https://youtu.be/cVLTBsyJduM",
+            websiteUrl: "https://daydream.hackclub.com/sao-paulo",
+          },
+        ],
+      },
       cta: {
         title: "Pronto para começar sua jornada?",
         description: "Junte-se a centenas de estudantes que já descobriram o poder da programação",
@@ -124,6 +149,29 @@ export default function HackSPPage() {
         coming: "January 2026",
         viewPast: "View Past Events",
       },
+      pastEvents: {
+        title: "Past Events",
+        subtitle: "Celebrating our journey and the amazing experiences we've created together",
+        participants: "Participants",
+        projects: "Projects",
+        officialVideo: "Official Video",
+        website: "Event Website",
+        events: [
+          {
+            name: "Daydream São Paulo by Hack SP",
+            date: "September 2025",
+            location:
+              "Institute of Mathematics, Statistics and Computer Science, University of São Paulo, São Paulo, SP",
+            participants: 12,
+            projects: 3,
+            description:
+              "In partnership with USPCodeLab and Hack Club, we organized Daydream São Paulo, part of a network of simultaneous hackathons around the globe. We hosted João Terra (Fundação Estudar) and Rodrigo Terron.",
+            highlights: ["Game Jam", "Workshops"],
+            videoUrl: "https://youtu.be/cVLTBsyJduM",
+            websiteUrl: "https://daydream.hackclub.com/sao-paulo",
+          },
+        ],
+      },
       cta: {
         title: "Ready to start your journey?",
         description: "Join hundreds of students who have already discovered the power of coding",
@@ -146,8 +194,6 @@ export default function HackSPPage() {
       <nav className="nav">
         <div className="container nav-content">
           <div className="logo-container">
-            {/* <div className="logo-icon">
-            </div> */}
             <span className="logo-text">
               Hack <span className="logo-highlight">SP</span>
             </span>
@@ -160,9 +206,9 @@ export default function HackSPPage() {
             <a href="#events" className="nav-link">
               {t.nav.events}
             </a>
-            <Link href="/past-events" className="nav-link">
+            <a href="#past-events" className="nav-link">
               {t.nav.pastEvents}
-            </Link>
+            </a>
             <a href="#community" className="nav-link">
               {t.nav.community}
             </a>
@@ -172,18 +218,31 @@ export default function HackSPPage() {
           </div>
 
           <div className="nav-actions">
-            <button className="theme-toggle" onClick={() => setIsDarkMode(!isDarkMode)} aria-label="Toggle theme">
+            <button
+              className="theme-toggle"
+              onClick={() => setIsDarkMode(!isDarkMode)}
+              aria-label="Toggle theme"
+            >
               {isDarkMode ? <Sun className="icon" /> : <Moon className="icon" />}
             </button>
-            <button className="btn btn-ghost" onClick={() => setLang(lang === "pt" ? "en" : "pt")}>
+            <button
+              className="btn btn-ghost"
+              onClick={() => setLang(lang === "pt" ? "en" : "pt")}
+            >
               <Globe className="icon" />
               {lang === "pt" ? "EN" : "PT"}
             </button>
-            <a href="https://forms.fillout.com/t/sXW7gt9yeBus" className="btn btn-primary">{t.hero.cta}</a>
+            <a
+              href="https://forms.fillout.com/t/sXW7gt9yeBus"
+              className="btn btn-primary"
+            >
+              {t.hero.cta}
+            </a>
           </div>
         </div>
       </nav>
 
+      {/* Hero */}
       <section className="hero">
         <div className="hero-bg">
           <div className="hero-bg-circle-1" />
@@ -197,11 +256,16 @@ export default function HackSPPage() {
           <h1 className="hero-title">{t.hero.title}</h1>
           <p className="hero-subtitle">{t.hero.subtitle}</p>
           <div className="hero-buttons">
-            <a href="https://forms.fillout.com/t/sXW7gt9yeBus" className="btn btn-primary btn-lg">
+            <a
+              href="https://forms.fillout.com/t/sXW7gt9yeBus"
+              className="btn btn-primary btn-lg"
+            >
               {t.hero.cta}
               <ArrowRight className="icon" />
             </a>
-            <a href="#about" className="btn btn-outline btn-lg">{t.hero.learn}</a>
+            <a href="#about" className="btn btn-outline btn-lg">
+              {t.hero.learn}
+            </a>
           </div>
         </div>
       </section>
@@ -264,7 +328,10 @@ export default function HackSPPage() {
                   </div>
                 </div>
                 <p className="event-description">{t.events.coming}</p>
-                <a href="https://forms.fillout.com/t/sXW7gt9yeBus" className="btn btn-primary btn-full">
+                <a
+                  href="https://forms.fillout.com/t/sXW7gt9yeBus"
+                  className="btn btn-primary btn-full"
+                >
                   {t.events.register}
                   <ArrowRight className="icon" />
                 </a>
@@ -273,12 +340,111 @@ export default function HackSPPage() {
           </div>
 
           <div className="text-center" style={{ marginTop: "2rem" }}>
-            <Link href="/past-events">
+            <a href="#past-events">
               <button className="btn btn-outline">
                 {t.events.viewPast}
                 <ArrowRight className="icon" />
               </button>
-            </Link>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Past Events Section */}
+      <section id="past-events" className="section">
+        <div className="container">
+          <h2 className="section-title">{t.pastEvents.title}</h2>
+          <p className="section-text" style={{ marginBottom: "3rem" }}>
+            {t.pastEvents.subtitle}
+          </p>
+
+          <div className="events-list">
+            {t.pastEvents.events.map((event, index) => (
+              <div key={index} className="past-event-card">
+                <div className="past-event-grid">
+                  <div className="past-event-info">
+                    <h2>{event.name}</h2>
+                    <div className="event-meta" style={{ marginBottom: "1.5rem" }}>
+                      <div className="event-meta-item">
+                        <Calendar className="icon" />
+                        <span>{event.date}</span>
+                      </div>
+                      <div className="event-meta-item">
+                        <MapPin className="icon" />
+                        <span>{event.location}</span>
+                      </div>
+                    </div>
+                    <p
+                      className="section-text"
+                      style={{ textAlign: "left", marginBottom: "1.5rem" }}
+                    >
+                      {event.description}
+                    </p>
+                    <div className="highlights">
+                      {event.highlights.map((highlight, i) => (
+                        <span key={i} className="highlight-tag">
+                          {highlight}
+                        </span>
+                      ))}
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        gap: "1rem",
+                        marginTop: "1.5rem",
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      <a
+                        href={event.videoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-primary"
+                      >
+                        <Video className="icon" />
+                        {t.pastEvents.officialVideo}
+                      </a>
+                      <a
+                        href={event.websiteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-outline"
+                      >
+                        <ExternalLink className="icon" />
+                        {t.pastEvents.website}
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="past-event-stats">
+                    <div className="past-stat-card">
+                      <Users
+                        className="icon-lg"
+                        style={{
+                          color: "var(--color-red)",
+                          margin: "0 auto 0.5rem",
+                        }}
+                      />
+                      <div className="past-stat-number">{event.participants}</div>
+                      <div className="past-stat-label">
+                        {t.pastEvents.participants}
+                      </div>
+                    </div>
+                    <div className="past-stat-card">
+                      <Calendar
+                        className="icon-lg"
+                        style={{
+                          color: "var(--color-blue)",
+                          margin: "0 auto 0.5rem",
+                        }}
+                      />
+                      <div className="past-stat-number">{event.projects}</div>
+                      <div className="past-stat-label">{t.pastEvents.projects}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -290,13 +456,17 @@ export default function HackSPPage() {
           <p className="section-text" style={{ marginBottom: "3rem" }}>
             {t.cta.description}
           </p>
-          <a href="https://forms.fillout.com/t/sXW7gt9yeBus" className="btn btn-primary btn-lg">
+          <a
+            href="https://forms.fillout.com/t/sXW7gt9yeBus"
+            className="btn btn-primary btn-lg"
+          >
             {t.cta.button}
             <ArrowRight className="icon" />
           </a>
         </div>
       </section>
 
+      {/* Footer */}
       <footer className="footer">
         <div className="container">
           <div className="footer-grid">
@@ -318,9 +488,9 @@ export default function HackSPPage() {
                 <a href="#events" className="footer-link">
                   {t.nav.events}
                 </a>
-                <Link href="/past-events" className="footer-link">
+                <a href="#past-events" className="footer-link">
                   {t.nav.pastEvents}
-                </Link>
+                </a>
                 <a href="#community" className="footer-link">
                   {t.nav.community}
                 </a>
@@ -330,10 +500,16 @@ export default function HackSPPage() {
             <div className="footer-section">
               <h3>{t.footer.connect}</h3>
               <div className="social-links">
-                <a href="https://www.instagram.com/hacksp_org/" className="social-link">
+                <a
+                  href="https://www.instagram.com/hacksp_org/"
+                  className="social-link"
+                >
                   <Instagram className="icon" />
                 </a>
-                <a href="https://github.com/HACK-SP-BR/" className="social-link">
+                <a
+                  href="https://github.com/HACK-SP-BR/"
+                  className="social-link"
+                >
                   <Github className="icon" />
                 </a>
                 <a href="mailto:contato@hacksp.org" className="social-link">
@@ -344,7 +520,9 @@ export default function HackSPPage() {
           </div>
 
           <div className="footer-bottom">
-            <p className="footer-copyright">© 2025 Hack SP. {t.footer.rights}.</p>
+            <p className="footer-copyright">
+              © 2025 Hack SP. {t.footer.rights}.
+            </p>
           </div>
         </div>
       </footer>
