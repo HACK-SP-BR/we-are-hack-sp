@@ -1,4 +1,4 @@
-import "./index.css";
+import "@assets/index.css";
 
 export default function App() {
   return (

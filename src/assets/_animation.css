@@ -1,0 +1,174 @@
+
+.-intro-x,
+.intro-x, 
+.-intro-y,
+.intro-y  {
+  --b0: 0;
+  --b1: 0;
+  --b2: 0;
+  --b3: 0;
+  --b4: 0;
+  --b5: 0;
+
+  &:nth-child(2n) {
+    --b0: 1;
+  }
+
+  &:nth-child(4n+3),
+  &:nth-child(4n) {
+    --b1: 1;
+  }
+  
+  &:nth-child(8n),
+  &:nth-child(8n-1),
+  &:nth-child(8n-2),
+  &:nth-child(8n-3) {
+    --b2: 1;
+  }
+
+  &:nth-child(16n),
+  &:nth-child(16n-1),
+  &:nth-child(16n-2),
+  &:nth-child(16n-3),
+  &:nth-child(16n-4),
+  &:nth-child(16n-5),
+  &:nth-child(16n-6),
+  &:nth-child(16n-7) {
+    --b3: 1;
+  }
+  
+  &:nth-child(32n),
+  &:nth-child(32n-1),
+  &:nth-child(32n-2),
+  &:nth-child(32n-3),
+  &:nth-child(32n-4),
+  &:nth-child(32n-5),
+  &:nth-child(32n-6),
+  &:nth-child(32n-7),
+  &:nth-child(32n-8),
+  &:nth-child(32n-9),
+  &:nth-child(32n-10),
+  &:nth-child(32n-11),
+  &:nth-child(32n-12),
+  &:nth-child(32n-13),
+  &:nth-child(32n-14),
+  &:nth-child(32n-15) {
+    --b4: 1;
+  }
+  
+  &:nth-child(64n),
+  &:nth-child(64n-1),
+  &:nth-child(64n-2),
+  &:nth-child(64n-3),
+  &:nth-child(64n-4),
+  &:nth-child(64n-5),
+  &:nth-child(64n-6),
+  &:nth-child(64n-7),
+  &:nth-child(64n-8),
+  &:nth-child(64n-9),
+  &:nth-child(64n-10),
+  &:nth-child(64n-11),
+  &:nth-child(64n-12),
+  &:nth-child(64n-13),
+  &:nth-child(64n-14),
+  &:nth-child(64n-15),
+  &:nth-child(64n-16),
+  &:nth-child(64n-17),
+  &:nth-child(64n-18),
+  &:nth-child(64n-19),
+  &:nth-child(64n-20),
+  &:nth-child(64n-21),
+  &:nth-child(64n-22),
+  &:nth-child(64n-23),
+  &:nth-child(64n-24),
+  &:nth-child(64n-25),
+  &:nth-child(64n-26),
+  &:nth-child(64n-27),
+  &:nth-child(64n-28),
+  &:nth-child(64n-29),
+  &:nth-child(64n-30),
+  &:nth-child(64n-31) {
+    --b5: 1;
+  }
+}
+
+
+.-intro-x:nth-child(n) {
+  --n: calc(var(--b0) + 2 * var(--b1) + 4 * var(--b2) + 8 * var(--b3) + 16 * var(--b4) + 32 * var(--b5));
+  position: relative;
+  opacity: 0;
+  transform: translateX(50px);
+  animation: 0.4s intro-x-animation ease-in-out 0.33333s;
+  animation-fill-mode: forwards;
+  animation-delay: calc(var(--n) * 50ms);
+
+}
+
+.intro-x:nth-child(n) {
+  --n: calc(var(--b0) + 2 * var(--b1) + 4 * var(--b2) + 8 * var(--b3) + 16 * var(--b4) + 32 * var(--b5));
+  position: relative;
+  opacity: 0;  transform: translateX(-50px);
+  animation: 0.4s intro-x-animation ease-in-out 0.33333s;
+  animation-fill-mode: forwards;
+  animation-delay: calc(var(--n) * 50ms);
+
+}
+
+.intro-y:nth-child(n) {
+  --n: calc(var(--b0) + 2 * var(--b1) + 4 * var(--b2) + 8 * var(--b3) + 16 * var(--b4) + 32 * var(--b5));
+  position: relative;
+  opacity: 0;  transform: translateY(50px);
+  animation: 0.4s intro-y-animation ease-in-out 0.33333s;
+  animation-fill-mode: forwards;
+  animation-delay: calc(var(--n) * 50ms);
+
+}
+
+.-intro-y:nth-child(n) {
+  --n: calc(var(--b0) + 2 * var(--b1) + 4 * var(--b2) + 8 * var(--b3) + 16 * var(--b4) + 32 * var(--b5));
+  position: relative;
+  opacity: 0;  transform: translateY(-50px);
+  animation: 0.4s intro-y-animation ease-in-out 0.33333s;
+  animation-fill-mode: forwards;
+  animation-delay: calc(var(--n) * 50ms);
+}
+
+
+
+
+@keyframes intro-x-animation {
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+
+@keyframes intro-y-animation {
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+
+/* Animation Fill Modes */
+.animate-fill-mode-none {
+  animation-fill-mode: none;
+}
+.animate-fill-mode-forwards {
+  animation-fill-mode: forwards;
+}
+.animate-fill-mode-backwards {
+  animation-fill-mode: backwards;
+}
+.animate-fill-mode-both {
+  animation-fill-mode: both;
+}
+
+/* Tap Highlight */
+.tap-highlight {
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.05);
+}
+

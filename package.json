@@ -14,10 +14,14 @@
     "@vitejs/plugin-react": "^5.1.2",
     "eslint-config-react-app": "^7.0.1",
     "react": "^19.2.0",
+    "react-datepicker": "^9.0.0",
     "react-dom": "^19.2.0",
     "react-router": "^7.10.1",
     "react-router-dom": "^7.10.1",
+    "survey-core": "^2.5.0",
+    "survey-creator-core": "^2.5.0",
     "tailwindcss": "^4.1.17",
+    "tailwindcss-animated": "^2.0.0",
     "vite-plugin-eslint": "^1.8.1"
   },
   "devDependencies": {
