@@ -3,6 +3,7 @@ import { createBrowserRouter, createRoutesFromElements, Route } from 'react-rout
 import { Routes } from '@app/modules/routes/routes';
 import { Layout } from './layout';
 import { HomePage } from '@app/modules/home/home.page';
+import { NotFoundPage } from '@app/modules/errors/not-found.page';
 // import { AboutPage } from './pages/about.page';
 // import { ContactPage } from './pages/contact.page';
 // import { CommunityPage } from './pages/community.page';
@@ -16,6 +17,8 @@ export const router = createBrowserRouter(
         <Route path={Routes.Contact} element={<></>} />
         <Route path={Routes.Community} element={<></>} />
       </Route>
+
+      <Route path="*" element={<NotFoundPage />} />
     </>
   ),
 );
