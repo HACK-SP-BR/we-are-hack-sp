@@ -10,9 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.17",
+    "eslint-config-react-app": "^7.0.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-router": "^7.10.1"
+    "react-router": "^7.10.1",
+    "react-router-dom": "^7.10.1",
+    "tailwindcss": "^4.1.17",
+    "vite-plugin-eslint": "^1.8.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
