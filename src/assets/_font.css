@@ -1,6 +1,5 @@
 @theme {
-    --font-\*: initial;
-    --font-primary: "Roboto", "sans-serif";
-    --font-secondary: "Merriweather", "serif";
-  }
-  
+  --font-*: initial;
+  --font-primary: "Geist Mono", monospace;
+  --font-secondary: "Geist Mono", monospace;
+}
