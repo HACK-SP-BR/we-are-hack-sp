@@ -21,7 +21,7 @@ export const events: Record<string, EventInfo> = {
     date: 'Setembro de 2025',
     location: 'IME-USP, São Paulo',
     p1: 'Em parceria com USPCodeLab e Hack Club, fizemos o Daydream São Paulo, parte de uma rede de hackathons simultâneos ao redor do globo. Recebemos João Terra (Fundação Estudar) e Rodrigo Terron.',
-    videoUrl: '"https://youtu.be/cVLTBsyJduM"',
+    videoUrl: 'https://youtu.be/cVLTBsyJduM',
     websiteUrl: 'https://daydream.hackclub.com/sao-paulo',
     stats: {
       participants: '12+',
