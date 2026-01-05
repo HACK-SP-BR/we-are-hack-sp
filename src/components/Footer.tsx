@@ -10,7 +10,7 @@ export const Footer: React.FC = () => {
         <div className="max-w-[1200px] mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
           <div className="flex flex-col gap-2 items-center md:items-start">
             <p className="text-sm opacity-60 font-medium">
-              {t('footer.fiscal')}
+              Fiscally sponsored by:
             </p>
             <a
                 href="https://hackclub.com"
@@ -27,7 +27,7 @@ export const Footer: React.FC = () => {
           </div>
 
           <div className="text-sm opacity-40">
-            <p>© {new Date().getFullYear()} Hack-SP</p>
+            <p>&copy; {new Date().getFullYear()} Hack-SP</p>
             <p>Made by the community</p>
           </div>
         </div>

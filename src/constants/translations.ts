@@ -8,8 +8,7 @@ export const translations = {
     "about.title": "Sobre nós",
     "about.p": "O Hack-SP é uma comunidade de hackathons e tecnologia no estado de São Paulo.",
     "hackathons.title": "Nossos Hackathons",
-    "hackathons.p": "Confira os próximos eventos e hackathons em São Paulo.",
-    "footer.fiscal": "Afiliação e patrocínio fiscal:",
+    "hackathons.p": "Confira os próximos eventos e hackathons em São Paulo."
   },
   en: {
     "nav.hackathons": "Hackathons",
@@ -21,8 +20,7 @@ export const translations = {
     "about.p":
         "Hack-SP is a community focused on fostering a culture of hackathons and technology in the state of São Paulo.",
     "hackathons.title": "Our Hackathons",
-    "hackathons.p": "Check out the upcoming events and hackathons in São Paulo.",
-    "footer.fiscal": "Affiliated with and fiscally sponsored by:",
+    "hackathons.p": "Check out the upcoming events and hackathons in São Paulo."
   },
 } as const;
 
