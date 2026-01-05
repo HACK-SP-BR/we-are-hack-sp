@@ -4,8 +4,8 @@ import { Github, Sun, Moon } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from '../contexts/ThemeContext';
 import { configUrl } from "../config/config.ts";
-import hDark from '../assets/h-dark.svg';
-import hLight from '../assets/h-light.svg';
+import hDark from '../assets/h_dark.svg';
+import hLight from '../assets/h_light.svg';
 
 export const Header: React.FC = () => {
   const { language, toggleLanguage, t } = useLanguage();
