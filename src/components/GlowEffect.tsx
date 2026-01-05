@@ -11,7 +11,7 @@ export const GlowEffect: React.FC<GlowEffectProps> = ({ children }) => {
   const { theme } = useTheme();
 
   const glowColor = theme === 'dark' 
-    ? 'rgba(255,255,255,0.06)' 
+    ? 'rgba(255,255,255,0.06)'
     : 'rgba(0,0,0,0.04)';
 
   return (
@@ -19,10 +19,12 @@ export const GlowEffect: React.FC<GlowEffectProps> = ({ children }) => {
       <div
         className="glow-effect"
         style={{
-          background: `radial-gradient(600px circle at ${x}px ${y}px, ${glowColor}, transparent 40%)`,
+          background: `radial-gradient(800px circle at ${x}px ${y}px, ${glowColor}, transparent 40%)`,
         }}
       />
-      {children}
+      <div className="relative z-10">
+        {children}
+      </div>
     </div>
   );
 };
