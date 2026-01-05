@@ -1,7 +1,0 @@
-@utility bg-menu-corner {
-    background-image: var(--bg-menu-corner);
-  }
-  @utility bg-menu-chevron {
-    background-image: var(--bg-menu-chevron);
-  }
-  

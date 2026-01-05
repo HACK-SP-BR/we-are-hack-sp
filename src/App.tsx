@@ -1,9 +1,16 @@
-import "@assets/index.css";
+import { RouterProvider } from 'react-router-dom';
+import { router } from './routes';
+import { LanguageProvider } from './contexts/LanguageContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 
-export default function App() {
+function App() {
   return (
-    <div className="bg-red-500">
-      <h1>Hello World</h1>
-    </div>
+    <ThemeProvider>
+      <LanguageProvider>
+        <RouterProvider router={router} />
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }
+
+export default App;
