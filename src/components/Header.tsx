@@ -39,7 +39,7 @@ export const Header: React.FC = () => {
             {t('nav.faq')}
           </Link>
           <a 
-            href="https://forms.gle/your-form-link" 
+            href={configUrl.joinUrl}
             target="_blank" 
             rel="noopener noreferrer"
             className="bg-primary text-white px-5 py-2 rounded-full font-bold text-sm hover:scale-105 transition-transform"

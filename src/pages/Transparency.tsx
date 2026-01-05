@@ -14,7 +14,7 @@ export const Transparency: React.FC = () => {
       </section>
 
       <div className="grid md:grid-cols-2 gap-8">
-        <div className="bg-foreground/[0.03] p-8 rounded-3xl border border-border">
+        <div className="bg-background/80 backdrop-blur-md p-8 rounded-3xl border border-border shadow-xl hover:shadow-2xl transition-shadow relative z-10">
           <Shield className="text-primary mb-4" size={40} />
           <h2 className="text-2xl font-bold mb-4">{t('home.values.fiscal.title')}</h2>
           <p className="opacity-80 leading-relaxed mb-6">
@@ -30,7 +30,7 @@ export const Transparency: React.FC = () => {
           </a>
         </div>
 
-        <div className="bg-foreground/[0.03] p-8 rounded-3xl border border-border">
+        <div className="bg-background/80 backdrop-blur-md p-8 rounded-3xl border border-border shadow-xl hover:shadow-2xl transition-shadow relative z-10">
           <Code className="text-primary mb-4" size={40} />
           <h2 className="text-2xl font-bold mb-4">Open Source</h2>
           <p className="opacity-80 leading-relaxed">
@@ -39,10 +39,12 @@ export const Transparency: React.FC = () => {
         </div>
       </div>
 
-      <section className="space-y-8">
-        <h2 className="text-3xl font-bold border-l-4 border-primary pl-6">O que o Hack Club faz?</h2>
+      <section className="space-y-8 bg-background/80 backdrop-blur-md p-10 md:p-12 rounded-[2rem] border border-border shadow-xl relative z-10">
+        <h2 className="text-3xl font-bold border-l-4 border-primary pl-6">
+          {t('home.values.whatIs.title').includes('O que') ? 'O que o Hack Club faz?' : 'What does Hack Club do?'}
+        </h2>
         <p className="text-lg opacity-80 leading-relaxed">
-          O Hack Club gerencia nossa conformidade legal, doações, contabilidade e supervisão de governança. Isso nos permite focar 100% em criar experiências incríveis para os estudantes.
+          {t('home.transparency.p1').split('. ').slice(1).join('. ')}
         </p>
       </section>
     </div>

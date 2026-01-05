@@ -29,7 +29,7 @@ export const About: React.FC = () => {
           </div>
         </div>
 
-        <div className="space-y-8 bg-foreground/[0.03] p-10 rounded-3xl border border-border">
+        <div className="space-y-8 bg-background/80 backdrop-blur-md p-10 rounded-3xl border border-border">
           <p className="text-2xl font-semibold opacity-100 text-primary">
             {t('about.p4')}
           </p>
