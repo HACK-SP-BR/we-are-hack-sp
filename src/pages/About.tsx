@@ -2,9 +2,10 @@ import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { configUrl } from '../config/config';
 
 export const About: React.FC = () => {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   return (
     <div className="page-transition max-w-5xl mx-auto py-12 space-y-20">
       <section className="text-center space-y-8">
@@ -43,13 +44,13 @@ export const About: React.FC = () => {
                 to="/support" 
                 className="bg-primary text-white px-8 py-3 rounded-full font-bold hover:scale-105 transition-transform"
               >
-                {language === 'pt' ? 'Como apoiar' : 'How to support'}
+                {t('support.donate')}
               </Link>
               <a 
-                href="mailto:contact@hacksp.org" 
+                href={`mailto:${configUrl.contactEmail}`} 
                 className="bg-foreground/5 border border-border px-8 py-3 rounded-full font-bold hover:bg-foreground/10 transition-all"
               >
-                {language === 'pt' ? 'Contato' : 'Contact'}
+                {t('support.contact')}
               </a>
             </div>
           </div>

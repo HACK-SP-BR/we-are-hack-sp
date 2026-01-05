@@ -11,7 +11,6 @@ export interface EventInfo {
     projects: string;
     duration: string;
   };
-  quote: string;
   photos: string[];
 }
 
