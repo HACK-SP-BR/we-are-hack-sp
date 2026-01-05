@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Github, Sun, Moon } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from '../contexts/ThemeContext';
+import { configUrl } from "../config/config.ts";
 import hDark from '../assets/h-dark.svg';
 import hLight from '../assets/h-light.svg';
 
@@ -31,7 +32,7 @@ export const Header: React.FC = () => {
         </nav>
 
         <div className="flex items-center gap-6">
-          <a href="https://github.com/hack-sp" target="_blank" rel="noopener noreferrer" className="text-foreground flex items-center hover:opacity-70 transition-opacity">
+          <a href={configUrl.githubUrl} target="_blank" rel="noopener noreferrer" className="text-foreground flex items-center hover:opacity-70 transition-opacity">
             <Github size={24} />
           </a>
           <button 
