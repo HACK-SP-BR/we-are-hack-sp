@@ -10,7 +10,7 @@ export const Layout: React.FC = () => {
       <GlowEffect>
         <div className="flex flex-col min-h-screen">
           <Header />
-          <main className="max-w-[1200px] mx-auto px-8 py-16 relative z-[2] flex-grow w-full">
+          <main className="max-w-[1400px] mx-auto px-6 md:px-12 py-16 relative z-[2] flex-grow w-full">
             <Outlet />
           </main>
           <Footer />

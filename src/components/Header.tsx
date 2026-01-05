@@ -12,8 +12,8 @@ export const Header: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-md border-b border-border px-8 py-4">
-      <div className="max-w-[1200px] mx-auto flex justify-between items-center">
+    <header className="sticky top-0 z-[20] border-b border-border px-6 md:px-12 py-4 bg-background/95 backdrop-blur-md">
+      <div className="max-w-[1400px] mx-auto flex justify-between items-center">
         <Link to="/" className="flex items-center">
           <img 
             src={theme === 'dark' ? hDark : hLight} 
@@ -22,16 +22,33 @@ export const Header: React.FC = () => {
           />
         </Link>
         
-        <nav className="flex gap-8">
-          <Link to="/hackathons" className="no-underline text-foreground font-medium transition-opacity hover:opacity-70">
+        <nav className="hidden lg:flex gap-8 items-center">
+          <Link to="/hackathons" className="no-underline text-foreground/70 font-medium transition-colors hover:text-foreground">
             {t('nav.hackathons')}
           </Link>
-          <Link to="/about" className="no-underline text-foreground font-medium transition-opacity hover:opacity-70">
+          <Link to="/about" className="no-underline text-foreground/70 font-medium transition-colors hover:text-foreground">
             {t('nav.about')}
           </Link>
+          <Link to="/transparency" className="no-underline text-foreground/70 font-medium transition-colors hover:text-foreground">
+            {t('nav.transparency')}
+          </Link>
+          <Link to="/support" className="no-underline text-foreground/70 font-medium transition-colors hover:text-foreground">
+            {t('nav.support')}
+          </Link>
+          <Link to="/faq" className="no-underline text-foreground/70 font-medium transition-colors hover:text-foreground">
+            {t('nav.faq')}
+          </Link>
+          <a 
+            href="https://forms.gle/your-form-link" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="bg-primary text-white px-5 py-2 rounded-full font-bold text-sm hover:scale-105 transition-transform"
+          >
+            {t('nav.join')}
+          </a>
         </nav>
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4 md:gap-6">
           <a href={configUrl.githubUrl} target="_blank" rel="noopener noreferrer" className="text-foreground flex items-center hover:opacity-70 transition-opacity">
             <Github size={24} />
           </a>

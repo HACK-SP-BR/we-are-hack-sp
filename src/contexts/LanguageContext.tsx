@@ -4,7 +4,7 @@ import { translations, type Language, type TranslationKey } from "../constants/t
 interface LanguageContextType {
   language: Language;
   toggleLanguage: () => void;
-  t: (key: TranslationKey) => string;
+  t: (key: TranslationKey, variables?: Record<string, string>) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType | null>(null);
@@ -16,8 +16,14 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     setLanguage((prev) => (prev === "pt" ? "en" : "pt"));
   };
 
-  const t = (key: TranslationKey) => {
-    return translations[language][key] || key;
+  const t = (key: TranslationKey, variables?: Record<string, string>): string => {
+    let text = (translations[language][key] as string) || key;
+    if (variables) {
+      Object.entries(variables).forEach(([k, v]) => {
+        text = text.replace(`{${k}}`, v);
+      });
+    }
+    return text;
   };
 
   const value = useMemo(() => ({ language, toggleLanguage, t }), [language]);
