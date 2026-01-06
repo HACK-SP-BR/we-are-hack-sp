@@ -1,3 +1,9 @@
+import event1 from '@/assets/events/daydream-sp/event1.jpeg';
+import event2 from '@/assets/events/daydream-sp/event2.jpeg';
+import event3 from '@/assets/events/daydream-sp/event3.jpeg';
+import event4 from '@/assets/events/daydream-sp/event4.jpeg';
+import event5 from '@/assets/events/daydream-sp/event5.jpeg';
+
 export interface EventInfo {
   id: string;
   name: string;
@@ -29,12 +35,11 @@ export const events: Record<string, EventInfo> = {
       duration: '10h'
     },
     photos: [
-      'https://cloud-3p0x62k84-hack-club-bot.vercel.app/0img_5159.jpg',
-      'https://cloud-3p0x62k84-hack-club-bot.vercel.app/1img_5146.jpg',
-      'https://cloud-3p0x62k84-hack-club-bot.vercel.app/2img_5157.jpg',
-      'https://cloud-3p0x62k84-hack-club-bot.vercel.app/3img_5148.jpg',
-      'https://cloud-3p0x62k84-hack-club-bot.vercel.app/4img_5131.jpg',
-      'https://cloud-3p0x62k84-hack-club-bot.vercel.app/5img_5119.jpg'
+      event1,
+      event2,
+      event3,
+      event4,
+      event5
     ]
   }
 };
