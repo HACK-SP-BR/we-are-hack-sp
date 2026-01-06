@@ -1,8 +1,8 @@
-import event1 from '@/assets/events/daydream-sp/event1.jpeg';
-import event2 from '@/assets/events/daydream-sp/event2.jpeg';
-import event3 from '@/assets/events/daydream-sp/event3.jpeg';
-import event4 from '@/assets/events/daydream-sp/event4.jpeg';
-import event5 from '@/assets/events/daydream-sp/event5.jpeg';
+import event1 from '../assets/events/daydream-sp/event1.jpeg';
+import event2 from '../assets/events/daydream-sp/event2.jpeg';
+import event3 from '../assets/events/daydream-sp/event3.jpeg';
+import event4 from '../assets/events/daydream-sp/event4.jpeg';
+import event5 from '../assets/events/daydream-sp/event5.jpeg';
 
 export interface EventInfo {
   id: string;
