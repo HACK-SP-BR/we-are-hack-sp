@@ -6,6 +6,17 @@
     <link rel="icon" type="image/svg+xml" href="/src/assets/icon_dark.svg" media="(prefers-color-scheme: dark)" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hack SP</title>
+    <script>
+      (function() {
+        try {
+          const saved = localStorage.getItem('theme');
+          const theme = saved === 'light' || saved === 'dark' 
+            ? saved 
+            : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          document.documentElement.classList.add(theme);
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
