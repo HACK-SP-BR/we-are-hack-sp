@@ -1,0 +1,46 @@
+import { createBrowserRouter } from 'react-router-dom';
+import { Layout } from '../layouts/Layout';
+import { Home } from '../pages/Home';
+import { About } from '../pages/About';
+import { Hackathons } from '../pages/Hackathons';
+import { Transparency } from '../pages/Transparency';
+import { Support } from '../pages/Support';
+import { FAQ } from '../pages/FAQ';
+import { DaydreamSP } from '../pages/events/DaydreamSP';
+
+export const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: 'about',
+        element: <About />,
+      },
+      {
+        path: 'hackathons',
+        element: <Hackathons />,
+      },
+      {
+        path: 'transparency',
+        element: <Transparency />,
+      },
+      {
+        path: 'support',
+        element: <Support />,
+      },
+      {
+        path: 'faq',
+        element: <FAQ />,
+      },
+      {
+        path: 'events/daydream-sp',
+        element: <DaydreamSP />,
+      },
+    ],
+  },
+]);

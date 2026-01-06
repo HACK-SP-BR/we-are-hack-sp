@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --primary: #ff0000;
+  --border: rgba(0, 0, 0, 0.04); /* Opacidade bem baixinha para o grid */
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+  --primary: #ff0000;
+  --border: rgba(255, 255, 255, 0.04); /* Opacidade bem baixinha para o grid */
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+}
+
+.glow-container {
+  @apply relative min-h-screen w-full;
+  background-image: 
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 30px 30px; /* Grid menor */
+}
+
+.glow-effect {
+  @apply fixed top-0 left-0 w-full h-full pointer-events-none z-[1];
+}
+
+.page-transition {
+  @apply animate-[fadeIn_0.5s_ease-out];
+}
+
+.typing-cursor {
+  @apply inline-block w-1 h-[0.8em] bg-primary animate-pulse align-middle;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
