@@ -7,8 +7,8 @@ export const Footer: React.FC = () => {
   const { language } = useLanguage();
   return (
       <footer className="w-full py-16 border-t border-border bg-background/80 backdrop-blur-md relative z-[2]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
-          <div className="flex flex-col gap-6 items-center md:items-start">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-2 md:grid-cols-3 gap-12 items-start">
+          <div className="flex flex-col gap-6 items-center md:items-start col-span-2 md:col-span-1">
             <div className="flex flex-col gap-2 items-center md:items-start">
               <p className="text-sm opacity-60 font-medium">
                 Fiscally sponsored by:

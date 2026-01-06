@@ -9,15 +9,15 @@ export const Home: React.FC = () => {
 
   return (
     <div className="page-transition flex flex-col items-center">
-      <section className="flex flex-col items-center justify-center min-h-[80vh] text-center mb-20 px-4">
+      <section className="flex flex-col items-center justify-center min-h-[80vh] text-center mb-20 px-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out">
         <TypingTitle 
           part1={t('home.title.part1')} 
           part2={t('home.title.part2')} 
         />
-        <p className="text-xl md:text-3xl opacity-60 max-w-3xl mx-auto leading-relaxed mb-12">
+        <p className="text-xl md:text-3xl opacity-60 max-w-3xl mx-auto leading-relaxed mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200 fill-mode-both">
           {t('home.subtitle')}
         </p>
-        <div className="flex flex-wrap justify-center gap-6">
+        <div className="flex flex-wrap justify-center gap-6 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500 fill-mode-both">
           <Link 
             to="/hackathons" 
             className="group flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition-all shadow-xl shadow-primary/20"
@@ -36,7 +36,7 @@ export const Home: React.FC = () => {
 
       <section className="w-full max-w-7xl mx-auto space-y-32 py-16 px-4">
         {/* Quem somos? */}
-        <div className="space-y-12 relative z-10">
+        <div className="space-y-12 relative z-10 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-700 fill-mode-both">
           <h2 className="text-5xl md:text-7xl font-bold border-l-8 border-primary pl-8 mb-12">
             {t('home.who.title')}
           </h2>
