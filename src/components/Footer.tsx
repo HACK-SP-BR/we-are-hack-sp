@@ -27,7 +27,7 @@ export const Footer: React.FC = () => {
               </a>
             </div>
             <div className="text-sm opacity-40 text-center md:text-left">
-              <p>&copy; {new Date().getFullYear()} Hack-SP</p>
+              <p>&copy; {new Date().getFullYear()} Hack SP</p>
               <p>Made by the community</p>
             </div>
           </div>
