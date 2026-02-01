@@ -32,6 +32,11 @@ export const Hackathons: React.FC = () => {
                   to={`/events/${event.id}`}
                   className="block bg-background/60 dark:bg-background/40 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-border/50 overflow-hidden relative group transition-all hover:scale-[1.01] duration-500 shadow-2xl shadow-black/5 dark:shadow-white/5"
                 >
+                  {event.bannerUrl && (
+                    <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
+                      <img src={event.bannerUrl} alt="" className="w-full h-full object-cover" />
+                    </div>
+                  )}
                   <div className="relative z-10 space-y-6">
                     <div className="flex flex-wrap items-center gap-4">
                       <h3 className="text-3xl font-bold">{event.name}</h3>

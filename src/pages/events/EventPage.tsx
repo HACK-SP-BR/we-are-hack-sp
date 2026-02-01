@@ -28,59 +28,71 @@ export const EventPage: React.FC = () => {
 
   return (
     <div className="page-transition max-w-5xl mx-auto py-12 space-y-20 px-4 md:px-0">
-      <section className="text-center space-y-8">
-        <h1 className="text-7xl font-bold">{event.name}</h1>
-        <div className="flex flex-col items-center gap-4 text-xl opacity-80">
-          <div className="flex items-center gap-2">
-            <Calendar size={20} className="text-primary" />
-            <span>{t('hackathons.past.date', { date: content.date })}</span>
+      <section className="space-y-12">
+        {event.bannerUrl && (
+          <div className="w-full h-[300px] md:h-[450px] rounded-[2rem] overflow-hidden border border-border shadow-2xl">
+            <img 
+              src={event.bannerUrl} 
+              alt={`Banner ${event.name}`} 
+              className="w-full h-full object-cover"
+            />
           </div>
-          <div className="flex items-center gap-2">
-            <MapPin size={20} className="text-primary" />
-            <span>{t('hackathons.past.location', { location: content.location })}</span>
-          </div>
-        </div>
-        <p className="text-2xl opacity-70 max-w-3xl mx-auto">
-          {content.description}
-        </p>
-        {content.extraInfo && (
-          <p className="text-xl opacity-80 max-w-2xl mx-auto bg-primary/5 p-6 rounded-2xl border border-primary/20">
-            {content.extraInfo}
-          </p>
         )}
-        <div className="flex justify-center flex-wrap gap-6">
-          {event.videoUrl && (
-            <a 
-              href={event.videoUrl}
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-full font-bold text-xl hover:scale-105 transition-transform shadow-lg shadow-primary/20"
-            >
-              <PlayCircle size={24} />
-              Mini Doc
-            </a>
+        
+        <div className="text-center space-y-8">
+          <h1 className="text-7xl font-bold">{event.name}</h1>
+          <div className="flex flex-col items-center gap-4 text-xl opacity-80">
+            <div className="flex items-center gap-2">
+              <Calendar size={20} className="text-primary" />
+              <span>{t('hackathons.past.date', { date: content.date })}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <MapPin size={20} className="text-primary" />
+              <span>{t('hackathons.past.location', { location: content.location })}</span>
+            </div>
+          </div>
+          <p className="text-2xl opacity-70 max-w-3xl mx-auto">
+            {content.description}
+          </p>
+          {content.extraInfo && (
+            <p className="text-xl opacity-80 max-w-2xl mx-auto bg-primary/5 p-6 rounded-2xl border border-primary/20">
+              {content.extraInfo}
+            </p>
           )}
-          {event.websiteUrl && (
-            <a 
-              href={event.websiteUrl}
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 bg-foreground/5 border border-border px-8 py-4 rounded-full font-bold text-xl hover:bg-foreground/10 transition-all"
-            >
-              <Globe size={24} />
-              Website
-            </a>
-          )}
-          {event.status === 'upcoming' && event.registrationUrl && (
-             <a 
-              href={event.registrationUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-full font-bold text-xl hover:scale-105 transition-transform shadow-lg shadow-primary/20"
-            >
-              {language === 'pt' ? 'Inscrever-se agora' : 'Register Now'}
-            </a>
-          )}
+          <div className="flex justify-center flex-wrap gap-6">
+            {event.videoUrl && (
+              <a 
+                href={event.videoUrl}
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-full font-bold text-xl hover:scale-105 transition-transform shadow-lg shadow-primary/20"
+              >
+                <PlayCircle size={24} />
+                Mini Doc
+              </a>
+            )}
+            {event.websiteUrl && (
+              <a 
+                href={event.websiteUrl}
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 bg-foreground/5 border border-border px-8 py-4 rounded-full font-bold text-xl hover:bg-foreground/10 transition-all"
+              >
+                <Globe size={24} />
+                Website
+              </a>
+            )}
+            {event.status === 'upcoming' && event.registrationUrl && (
+               <a 
+                href={event.registrationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-full font-bold text-xl hover:scale-105 transition-transform shadow-lg shadow-primary/20"
+              >
+                {language === 'pt' ? 'Inscrever-se agora' : 'Register Now'}
+              </a>
+            )}
+          </div>
         </div>
       </section>
 

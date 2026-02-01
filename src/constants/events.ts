@@ -11,6 +11,7 @@ export interface EventInfo {
   videoUrl?: string;
   websiteUrl?: string;
   registrationUrl?: string;
+  bannerUrl?: string;
   translations: {
     pt: {
       date: string;
@@ -70,6 +71,7 @@ export const events: Record<string, EventInfo> = {
     status: 'upcoming',
     name: 'Hack SP 2026',
     registrationUrl: 'https://exemplo.com/inscricao',
+    bannerUrl: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1000',
     translations: {
       pt: {
         date: 'Em breve em 2026',
