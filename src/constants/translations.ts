@@ -69,7 +69,6 @@ export const translations = {
 
     "hackathons.title": "Nossos Hackathons",
     "hackathons.past.title": "O que já fizemos no passado",
-    "hackathons.past.p1": "Em parceria com USPCodeLab e Hack Club, fizemos o Daydream São Paulo, parte de uma rede de hackathons simultâneos ao redor do globo. Recebemos João Terra (Fundação Estudar) e Rodrigo Terron.",
     "hackathons.past.link": "Assista nosso mini documentário ou site.",
     "hackathons.past.date": "Data: {date}",
     "hackathons.past.location": "Local: {location}",
@@ -149,7 +148,6 @@ export const translations = {
 
     "hackathons.title": "Our Hackathons",
     "hackathons.past.title": "What we've done in the past",
-    "hackathons.past.p1": "In partnership with USPCodeLab and Hack Club, we organized Daydream São Paulo, part of a network of simultaneous hackathons around the globe. We hosted João Terra (Fundação Estudar) and Rodrigo Terron.",
     "hackathons.past.link": "Watch our mini documentary or website.",
     "hackathons.past.date": "Date: {date}",
     "hackathons.past.location": "Location: {location}",
