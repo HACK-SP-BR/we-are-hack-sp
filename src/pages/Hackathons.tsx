@@ -13,16 +13,17 @@ export const Hackathons: React.FC = () => {
     <div className="page-transition max-w-6xl mx-auto py-12 space-y-20">
       <section className="max-w-4xl px-4 md:px-0">
         <h1 className="text-5xl font-bold mb-8">{t('hackathons.title')}</h1>
-        <p className="text-xl opacity-70 bg-primary/5 p-6 rounded-xl border-l-4 border-primary shadow-lg shadow-primary/5">
+        <p className="text-xl opacity-70">
           {t('hackathons.p')}
         </p>
       </section>
 
-      {upcomingEvents.length > 0 && (
-        <section className="space-y-12 px-4 md:px-0">
-          <h2 className="text-4xl font-bold border-b border-border pb-4">
-            {language === 'pt' ? 'Próximos eventos' : 'Upcoming events'}
-          </h2>
+      <section className="space-y-12 px-4 md:px-0">
+        <h2 className="text-4xl font-bold border-b border-border pb-4">
+          {language === 'pt' ? 'Próximos eventos' : 'Upcoming events'}
+        </h2>
+        
+        {upcomingEvents.length > 0 ? (
           <div className="grid gap-8">
             {upcomingEvents.map(event => {
                const content = event.translations[language as 'pt' | 'en'] || event.translations.pt;
@@ -59,41 +60,49 @@ export const Hackathons: React.FC = () => {
               );
             })}
           </div>
+        ) : (
+          <div className="bg-background/60 dark:bg-background/40 backdrop-blur-md rounded-3xl p-12 border border-border/50 text-center">
+            <p className="text-xl opacity-60">
+              {t('hackathons.noUpcoming')}
+            </p>
+          </div>
+        )}
+      </section>
+
+      {pastEvents.length > 0 && (
+        <section className="space-y-12 px-4 md:px-0">
+          <h2 className="text-4xl font-bold border-b border-border pb-4">
+            {t('hackathons.past.title')}
+          </h2>
+          
+          <div className="grid gap-8">
+            {pastEvents.map(event => {
+              const content = event.translations[language as 'pt' | 'en'] || event.translations.pt;
+              return (
+                <Link 
+                  key={event.id}
+                  to={`/events/${event.id}`}
+                  className="block bg-background/60 dark:bg-background/40 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-border/50 overflow-hidden relative group transition-all hover:scale-[1.01] duration-500 shadow-2xl shadow-black/5 dark:shadow-white/5"
+                >
+                  <div className="relative z-10 space-y-6">
+                    <h3 className="text-3xl font-bold">{event.name}</h3>
+                    <p className="text-lg opacity-80 max-w-2xl">
+                      {content.description}
+                    </p>
+                    
+                    <div className="flex items-center gap-2 text-primary font-bold group-hover:gap-3 transition-all">
+                      {language === 'pt' ? 'Ver momentos do evento' : 'View event moments'}
+                      <ArrowRight size={20} />
+                    </div>
+                  </div>
+                  
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[100px] -mr-32 -mt-32 rounded-full group-hover:bg-primary/10 transition-colors" />
+                </Link>
+              );
+            })}
+          </div>
         </section>
       )}
-
-      <section className="space-y-12 px-4 md:px-0">
-        <h2 className="text-4xl font-bold border-b border-border pb-4">
-          {t('hackathons.past.title')}
-        </h2>
-        
-        <div className="grid gap-8">
-          {pastEvents.map(event => {
-            const content = event.translations[language as 'pt' | 'en'] || event.translations.pt;
-            return (
-              <Link 
-                key={event.id}
-                to={`/events/${event.id}`}
-                className="block bg-background/60 dark:bg-background/40 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-border/50 overflow-hidden relative group transition-all hover:scale-[1.01] duration-500 shadow-2xl shadow-black/5 dark:shadow-white/5"
-              >
-                <div className="relative z-10 space-y-6">
-                  <h3 className="text-3xl font-bold">{event.name}</h3>
-                  <p className="text-lg opacity-80 max-w-2xl">
-                    {content.description}
-                  </p>
-                  
-                  <div className="flex items-center gap-2 text-primary font-bold group-hover:gap-3 transition-all">
-                    {language === 'pt' ? 'Ver momentos do evento' : 'View event moments'}
-                    <ArrowRight size={20} />
-                  </div>
-                </div>
-                
-                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[100px] -mr-32 -mt-32 rounded-full group-hover:bg-primary/10 transition-colors" />
-              </Link>
-            );
-          })}
-        </div>
-      </section>
     </div>
   );
 };

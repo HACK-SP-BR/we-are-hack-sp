@@ -1,8 +1,9 @@
-import event1 from '../assets/events/daydream-sp/event1.jpeg';
-import event2 from '../assets/events/daydream-sp/event2.jpeg';
-import event3 from '../assets/events/daydream-sp/event3.jpeg';
-import event4 from '../assets/events/daydream-sp/event4.jpeg';
-import event5 from '../assets/events/daydream-sp/event5.jpeg';
+import daydream_event1 from '../assets/events/daydream-sp/event1.jpeg';
+import daydream_event2 from '../assets/events/daydream-sp/event2.jpeg';
+import daydream_event3 from '../assets/events/daydream-sp/event3.jpeg';
+import daydream_event4 from '../assets/events/daydream-sp/event4.jpeg';
+import daydream_event5 from '../assets/events/daydream-sp/event5.jpeg';
+import drx_banner from '../assets/events/drx_hacksp/drx_banner.jpg';
 
 export interface EventInfo {
   id: string;
@@ -12,18 +13,19 @@ export interface EventInfo {
   websiteUrl?: string;
   registrationUrl?: string;
   bannerUrl?: string;
+  googleMapsUrl?: string;
   translations: {
     pt: {
       date: string;
       location: string;
       description: string;
-      extraInfo?: string;
+      locationDescription?: string;
     };
     en: {
       date: string;
       location: string;
       description: string;
-      extraInfo?: string;
+      locationDescription?: string;
     };
   };
   stats?: {
@@ -32,6 +34,7 @@ export interface EventInfo {
     duration: string;
   };
   photos: string[];
+  locationPhotos?: string[];
 }
 
 export const events: Record<string, EventInfo> = {
@@ -59,33 +62,31 @@ export const events: Record<string, EventInfo> = {
       duration: '10h'
     },
     photos: [
-      event1,
-      event2,
-      event3,
-      event4,
-      event5
+      daydream_event1,
+      daydream_event2,
+      daydream_event3,
+      daydream_event4,
+      daydream_event5
     ]
   },
-  proximo: {
-    id: 'proximo-hackathon',
+  drx: {
+    id: 'drx',
     status: 'upcoming',
-    name: 'Hack SP 2026',
-    registrationUrl: 'https://exemplo.com/inscricao',
-    bannerUrl: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1000',
+    name: 'DRX by Hack SP',
+    registrationUrl: 'https://hacksp.fillout.com/drx',
+    bannerUrl: drx_banner,
     translations: {
       pt: {
-        date: 'Em breve em 2026',
-        location: 'São Paulo, SP',
-        description: 'Nosso próximo grande evento está chegando! Prepare-se para 24 horas de pura criação, aprendizado e pizzas.',
-        extraInfo: 'As inscrições abrirão em breve. Fique atento às nossas redes sociais!'
+        date: '28 de Fevereiro',
+        location: 'A confirmar, São Paulo, SP',
+        description: 'Nosso próximo grande evento está chegando! Prepare-se para 12 horas de pura criação, aprendizado e pizzas.'
       },
       en: {
-        date: 'Coming soon in 2026',
-        location: 'São Paulo, SP',
-        description: 'Our next big event is coming! Get ready for 24 hours of pure creation, learning, and pizzas.',
-        extraInfo: 'Registration will open soon. Stay tuned to our social media!'
+        date: 'February 28th',
+        location: 'To be confirmed, São Paulo, SP',
+        description: 'Our next big event is coming! Get ready for 12 hours of pure creation, learning, and pizzas.'
       }
     },
-    photos: []
+    photos: [],
   }
 };

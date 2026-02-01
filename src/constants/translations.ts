@@ -67,7 +67,7 @@ export const translations = {
     "support.donate": "Fazer uma doação",
     "support.contact": "Contatar-nos",
 
-    "hackathons.title": "Nossos Hackathons",
+    "hackathons.title": "Hackathons",
     "hackathons.past.title": "O que já fizemos no passado",
     "hackathons.past.link": "Assista nosso mini documentário ou site.",
     "hackathons.past.date": "Data: {date}",
@@ -76,7 +76,9 @@ export const translations = {
     "hackathons.past.projects": "Projetos",
     "hackathons.past.immersion": "Dia de imersão",
     "hackathons.past.organizers": "Organizadores do Hack SP",
-    "hackathons.p": "Confira os próximos eventos e hackathons em São Paulo."
+    "hackathons.p": "Nossa missão é proporcionar experiências incríveis de hackathons para adolescentes em São Paulo. Confira nossos eventos abaixo.",
+    "hackathons.noUpcoming": "Nenhum evento programado no momento. Fique ligado!",
+    "event.location.title": "Sobre o Local",
   },
   en: {
     "nav.hackathons": "Hackathons",
@@ -85,6 +87,7 @@ export const translations = {
     "nav.support": "Support",
     "nav.faq": "FAQ",
     "nav.join": "Join us",
+    "nav.home": "Home",
 
     "home.title.part1": "Hack",
     "home.title.part2": "SP",
@@ -115,7 +118,7 @@ export const translations = {
     "home.transparency.more": "Understand our mission",
     "home.who.title": "Who we are?",
     "home.who.p1": "Hack SP is a project developed by high school students dedicated to providing incredible hackathon experiences for teenagers in São Paulo.",
-    "home.who.p2": "What is a hackathon? A hackathon is an intensive and collaborative event in which participants work in teams to develop innovative solutions in a limited period of time. Its goal is to stimulate creativity, experimentation, and rapid prototyping, resulting in projects that respond to challenges proposed by the event organization.",
+    "home.who.p2": "What is a hackathon? A hackathon is an intensive and collaborative event in which participants work in teams to develop innovative solutions in a limited period of time. Its goal is to stimulate creativity, experiment and rapid prototyping, resulting in projects that respond to challenges proposed by the event organization.",
     "home.who.p3": "Hack SP is fiscally sponsored by Hack Club, a 501(c)(3) nonprofit organization that encourages more than 100,000 teenagers around the world to code through a network of coding clubs and events.",
     "home.who.p4": "Fiscal sponsorship is a legal and financial arrangement in which a recognized nonprofit organization extends its tax-exempt status to a project that aligns with its mission. This allows Hack SP to operate as a public initiative while Hack Club manages compliance, donations, accounting, and governance oversight.",
     "home.who.p5": "Being a nonprofit initiative clearly demonstrates our commitment to keeping Hack SP free and open source for everyone. This paves the way for a sustainable development model that goes beyond personal participation. It also provides important legal protections and guarantees for people who adopt and use Hack SP.",
@@ -146,7 +149,7 @@ export const translations = {
     "support.donate": "Make a donation",
     "support.contact": "Contact us",
 
-    "hackathons.title": "Our Hackathons",
+    "hackathons.title": "Hackathons",
     "hackathons.past.title": "What we've done in the past",
     "hackathons.past.link": "Watch our mini documentary or website.",
     "hackathons.past.date": "Date: {date}",
@@ -155,7 +158,9 @@ export const translations = {
     "hackathons.past.projects": "Projects",
     "hackathons.past.immersion": "Day of immersion",
     "hackathons.past.organizers": "Hack SP Organizers",
-    "hackathons.p": "Check out the upcoming events and hackathons in São Paulo."
+    "hackathons.p": "Our mission is to provide incredible hackathon experiences for teenagers in São Paulo. Check out our events below.",
+    "hackathons.noUpcoming": "No events scheduled at the moment. Stay tuned!",
+    "event.location.title": "About the Location",
   },
 } as const;
 

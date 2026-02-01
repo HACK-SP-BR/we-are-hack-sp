@@ -11,6 +11,7 @@ export const EventPage: React.FC = () => {
   const event = Object.values(events).find(e => e.id === eventId);
   
   const [currentPhotoIndex, setCurrentPhotoIndex] = React.useState(0);
+  const [currentLocationPhotoIndex, setCurrentLocationPhotoIndex] = React.useState(0);
 
   if (!event) {
     return <Navigate to="/hackathons" replace />;
@@ -26,15 +27,27 @@ export const EventPage: React.FC = () => {
     setCurrentPhotoIndex((prev) => (prev - 1 + event.photos.length) % event.photos.length);
   };
 
+  const nextLocationPhoto = () => {
+    if (event.locationPhotos) {
+      setCurrentLocationPhotoIndex((prev) => (prev + 1) % event.locationPhotos!.length);
+    }
+  };
+
+  const prevLocationPhoto = () => {
+    if (event.locationPhotos) {
+      setCurrentLocationPhotoIndex((prev) => (prev - 1 + event.locationPhotos!.length) % event.locationPhotos!.length);
+    }
+  };
+
   return (
     <div className="page-transition max-w-5xl mx-auto py-12 space-y-20 px-4 md:px-0">
       <section className="space-y-12">
         {event.bannerUrl && (
-          <div className="w-full h-[300px] md:h-[450px] rounded-[2rem] overflow-hidden border border-border shadow-2xl">
+          <div className="w-full rounded-[2rem] overflow-hidden border border-border shadow-2xl bg-foreground/[0.02]">
             <img 
               src={event.bannerUrl} 
               alt={`Banner ${event.name}`} 
-              className="w-full h-full object-cover"
+              className="w-full h-auto block"
             />
           </div>
         )}
@@ -48,17 +61,23 @@ export const EventPage: React.FC = () => {
             </div>
             <div className="flex items-center gap-2">
               <MapPin size={20} className="text-primary" />
-              <span>{t('hackathons.past.location', { location: content.location })}</span>
+              {event.googleMapsUrl ? (
+                <a 
+                  href={event.googleMapsUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors underline decoration-primary/30 underline-offset-4"
+                >
+                  {t('hackathons.past.location', { location: content.location })}
+                </a>
+              ) : (
+                <span>{t('hackathons.past.location', { location: content.location })}</span>
+              )}
             </div>
           </div>
           <p className="text-2xl opacity-70 max-w-3xl mx-auto">
             {content.description}
           </p>
-          {content.extraInfo && (
-            <p className="text-xl opacity-80 max-w-2xl mx-auto bg-primary/5 p-6 rounded-2xl border border-primary/20">
-              {content.extraInfo}
-            </p>
-          )}
           <div className="flex justify-center flex-wrap gap-6">
             {event.videoUrl && (
               <a 
@@ -83,7 +102,7 @@ export const EventPage: React.FC = () => {
               </a>
             )}
             {event.status === 'upcoming' && event.registrationUrl && (
-               <a 
+              <a 
                 href={event.registrationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -114,6 +133,73 @@ export const EventPage: React.FC = () => {
             <p className="opacity-60">{t('hackathons.past.immersion')}</p>
           </div>
         </div>
+      )}
+
+      {(content.locationDescription || (event.locationPhotos && event.locationPhotos.length > 0)) && (
+        <section className="space-y-12">
+          <h2 className="text-4xl font-bold border-b border-border pb-4">{t('event.location.title')}</h2>
+          
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              {content.locationDescription && (
+                <p className="text-2xl opacity-70 leading-relaxed">
+                  {content.locationDescription}
+                </p>
+              )}
+              {event.googleMapsUrl && (
+                <a 
+                  href={event.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-primary font-bold text-xl hover:underline"
+                >
+                  <MapPin size={24} />
+                  {language === 'pt' ? 'Ver no Google Maps' : 'View on Google Maps'}
+                </a>
+              )}
+            </div>
+            
+            {event.locationPhotos && event.locationPhotos.length > 0 && (
+              <div className="relative group h-[300px] md:h-[400px] overflow-hidden rounded-[2rem] border border-border bg-foreground/5 shadow-2xl">
+                {event.locationPhotos.map((photo, index) => (
+                  <div
+                    key={index}
+                    className={`absolute inset-0 transition-all duration-700 ease-in-out transform ${
+                      index === currentLocationPhotoIndex 
+                        ? 'opacity-100 scale-100 translate-x-0' 
+                        : index < currentLocationPhotoIndex 
+                          ? 'opacity-0 scale-95 -translate-x-full' 
+                          : 'opacity-0 scale-95 translate-x-full'
+                    }`}
+                  >
+                    <img
+                      src={photo}
+                      alt={`${event.name} Location - ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
+
+                {event.locationPhotos.length > 1 && (
+                  <>
+                    <button
+                      onClick={prevLocationPhoto}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/20 backdrop-blur-md border border-white/10 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background/40"
+                    >
+                      <ChevronLeft size={24} />
+                    </button>
+                    <button
+                      onClick={nextLocationPhoto}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/20 backdrop-blur-md border border-white/10 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background/40"
+                    >
+                      <ChevronRight size={24} />
+                    </button>
+                  </>
+                )}
+              </div>
+            )}
+          </div>
+        </section>
       )}
 
       {event.photos.length > 0 && (
