@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
         element: <FAQ />,
       },
       {
-        path: 'events/:eventId',
+        path: ':eventId',
         element: <EventPage />,
       },
     ],
