@@ -6,7 +6,7 @@ import { Hackathons } from '../pages/Hackathons';
 import { Transparency } from '../pages/Transparency';
 import { Support } from '../pages/Support';
 import { FAQ } from '../pages/FAQ';
-import { DaydreamSP } from '../pages/events/DaydreamSP';
+import { EventPage } from '../pages/events/EventPage';
 
 export const router = createBrowserRouter([
   {
@@ -38,8 +38,8 @@ export const router = createBrowserRouter([
         element: <FAQ />,
       },
       {
-        path: 'events/daydream-sp',
-        element: <DaydreamSP />,
+        path: ':eventId',
+        element: <EventPage />,
       },
     ],
   },
