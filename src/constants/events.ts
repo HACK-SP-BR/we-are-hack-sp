@@ -79,12 +79,12 @@ export const events: Record<string, EventInfo> = {
       pt: {
         date: '28 de Fevereiro',
         location: 'A confirmar, São Paulo, SP',
-        description: 'Nosso próximo grande evento está chegando! Prepare-se para 12 horas de pura criação, aprendizado e pizzas.'
+        description: 'Em parceria com Dr. Consulta, Hack SP lança seu novo hackathon para adolescentes: DRX. Nosso próximo grande evento está chegando! Prepare-se para 12 horas de pura criação, aprendizado e pizzas.'
       },
       en: {
         date: 'February 28th',
         location: 'To be confirmed, São Paulo, SP',
-        description: 'Our next big event is coming! Get ready for 12 hours of pure creation, learning, and pizzas.'
+        description: 'In partnership with Dr. Consulta, Hack SP launches its new hackathon for teenagers: DRX. Our next big event is coming soon! Get ready for 12 hours of pure creation, learning, and pizza.'
       }
     },
     photos: [],
