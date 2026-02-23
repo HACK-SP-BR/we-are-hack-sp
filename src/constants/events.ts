@@ -75,18 +75,24 @@ export const events: Record<string, EventInfo> = {
     name: 'DRX by Hack SP',
     registrationUrl: 'https://hacksp.fillout.com/drx',
     bannerUrl: drx_banner,
+    googleMapsUrl:
+      'https://www.google.com/maps/search/?api=1&query=Taqtile%20Sumar%C3%A9%20S%C3%A3o%20Paulo%20SP',
     translations: {
       pt: {
         date: '28 de Fevereiro',
-        location: 'A confirmar, São Paulo, SP',
-        description: 'Em parceria com Dr. Consulta, Hack SP lança seu novo hackathon para adolescentes: DRX. Nosso próximo grande evento está chegando! Prepare-se para 12 horas de pura criação, aprendizado e pizzas.'
+        location: 'Taqtile — Sumaré, São Paulo, SP',
+        locationDescription: 'Local: Taqtile, no bairro Sumaré (São Paulo, SP).',
+        description:
+          'Em parceria com Dr. Consulta, Hack SP lança seu novo hackathon para adolescentes: DRX. Nosso próximo grande evento está chegando! Prepare-se para 12 horas de pura criação, aprendizado e pizzas.',
       },
       en: {
         date: 'February 28th',
-        location: 'To be confirmed, São Paulo, SP',
-        description: 'In partnership with Dr. Consulta, Hack SP launches its new hackathon for teenagers: DRX. Our next big event is coming soon! Get ready for 12 hours of pure creation, learning, and pizza.'
-      }
+        location: 'Taqtile — Sumaré, São Paulo, Brazil',
+        locationDescription: 'Venue: Taqtile, in the Sumaré neighborhood (São Paulo).',
+        description:
+          'In partnership with Dr. Consulta, Hack SP launches its new hackathon for teenagers: DRX. Our next big event is coming soon! Get ready for 12 hours of pure creation, learning, and pizza.',
+      },
     },
     photos: [],
-  }
+  },
 };
