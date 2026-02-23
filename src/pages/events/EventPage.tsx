@@ -57,7 +57,7 @@ export const EventPage: React.FC = () => {
           <div className="flex flex-col items-center gap-4 text-xl opacity-80">
             <div className="flex items-center gap-2">
               <Calendar size={20} className="text-primary" />
-              <span>{t('hackathons.past.date', { date: content.date })}</span>
+              <span>{content.date}</span>
             </div>
             <div className="flex items-center gap-2">
               <MapPin size={20} className="text-primary" />
@@ -68,10 +68,10 @@ export const EventPage: React.FC = () => {
                   rel="noopener noreferrer"
                   className="hover:text-primary transition-colors underline decoration-primary/30 underline-offset-4"
                 >
-                  {t('hackathons.past.location', { location: content.location })}
+                  {content.location}
                 </a>
               ) : (
-                <span>{t('hackathons.past.location', { location: content.location })}</span>
+                <span>{content.location}</span>
               )}
             </div>
           </div>
@@ -135,23 +135,26 @@ export const EventPage: React.FC = () => {
         </div>
       )}
 
-      {(content.locationDescription || (event.locationPhotos && event.locationPhotos.length > 0)) && (
+      {(content.locationDescription || (event.locationPhotos && event.locationPhotos.length > 0) || event.googleMapsUrl) && (
         <section className="space-y-12">
-          <h2 className="text-4xl font-bold border-b border-border pb-4">{t('event.location.title')}</h2>
-          
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+            <div className="space-y-8">
+              <h2 className="text-5xl font-bold leading-tight">
+                {language === 'pt' ? 'Estamos te esperando nesse endereço' : "We're waiting for you at this address"}
+              </h2>
+              
               {content.locationDescription && (
-                <p className="text-2xl opacity-70 leading-relaxed">
+                <p className="text-2xl opacity-70 leading-relaxed italic border-l-4 border-primary/30 pl-4">
                   {content.locationDescription}
                 </p>
               )}
+
               {event.googleMapsUrl && (
                 <a 
                   href={event.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-primary font-bold text-xl hover:underline"
+                  className="inline-flex items-center gap-2 text-primary font-bold text-xl hover:underline bg-primary/5 px-6 py-3 rounded-full transition-colors"
                 >
                   <MapPin size={24} />
                   {language === 'pt' ? 'Ver no Google Maps' : 'View on Google Maps'}
@@ -159,45 +162,60 @@ export const EventPage: React.FC = () => {
               )}
             </div>
             
-            {event.locationPhotos && event.locationPhotos.length > 0 && (
-              <div className="relative group h-[300px] md:h-[400px] overflow-hidden rounded-[2rem] border border-border bg-foreground/5 shadow-2xl">
-                {event.locationPhotos.map((photo, index) => (
-                  <div
-                    key={index}
-                    className={`absolute inset-0 transition-all duration-700 ease-in-out transform ${
-                      index === currentLocationPhotoIndex 
-                        ? 'opacity-100 scale-100 translate-x-0' 
-                        : index < currentLocationPhotoIndex 
-                          ? 'opacity-0 scale-95 -translate-x-full' 
-                          : 'opacity-0 scale-95 translate-x-full'
-                    }`}
-                  >
-                    <img
-                      src={photo}
-                      alt={`${event.name} Location - ${index + 1}`}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                ))}
+            <div className="space-y-8">
+              {event.googleMapsUrl && (
+                <div className="w-full aspect-[4/3] rounded-[2rem] overflow-hidden border border-border shadow-2xl bg-foreground/5">
+                  <iframe
+                    title="Google Maps"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    src={`https://www.google.com/maps?q=${encodeURIComponent(event.googleMapsUrl.split('query=')[1] || content.location)}&output=embed`}
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              )}
+              
+              {event.locationPhotos && event.locationPhotos.length > 0 && (
+                <div className="relative group aspect-[4/3] overflow-hidden rounded-[2rem] border border-border bg-foreground/5 shadow-2xl">
+                  {event.locationPhotos.map((photo, index) => (
+                    <div
+                      key={index}
+                      className={`absolute inset-0 transition-all duration-700 ease-in-out transform ${
+                        index === currentLocationPhotoIndex 
+                          ? 'opacity-100 scale-100 translate-x-0' 
+                          : index < currentLocationPhotoIndex 
+                            ? 'opacity-0 scale-95 -translate-x-full' 
+                            : 'opacity-0 scale-95 translate-x-full'
+                      }`}
+                    >
+                      <img
+                        src={photo}
+                        alt={`${event.name} Location - ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ))}
 
-                {event.locationPhotos.length > 1 && (
-                  <>
-                    <button
-                      onClick={prevLocationPhoto}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/20 backdrop-blur-md border border-white/10 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background/40"
-                    >
-                      <ChevronLeft size={24} />
-                    </button>
-                    <button
-                      onClick={nextLocationPhoto}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/20 backdrop-blur-md border border-white/10 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background/40"
-                    >
-                      <ChevronRight size={24} />
-                    </button>
-                  </>
-                )}
-              </div>
-            )}
+                  {event.locationPhotos.length > 1 && (
+                    <>
+                      <button
+                        onClick={prevLocationPhoto}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/20 backdrop-blur-md border border-white/10 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background/40"
+                      >
+                        <ChevronLeft size={24} />
+                      </button>
+                      <button
+                        onClick={nextLocationPhoto}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/20 backdrop-blur-md border border-white/10 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background/40"
+                      >
+                        <ChevronRight size={24} />
+                      </button>
+                    </>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
         </section>
       )}
