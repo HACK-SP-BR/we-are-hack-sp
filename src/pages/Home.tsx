@@ -1,9 +1,12 @@
 import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { TypingTitle } from '../components/TypingTitle';
-import { ArrowRight, Code2, Users, Rocket, Zap, BookOpen, MessageSquare, Presentation, Star, Newspaper } from 'lucide-react';
+import { ArrowRight, Code2, Users, Rocket, Zap, BookOpen, MessageSquare, Presentation, Star, Newspaper, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { events } from '../constants/events';
+import { news } from '../constants/news';
+import {config} from "typescript-eslint";
+import {configUrl} from "../config/config.ts";
 
 export const Home: React.FC = () => {
   const { t, language } = useLanguage();
@@ -94,13 +97,86 @@ export const Home: React.FC = () => {
           </div>
         </div>
 
-        {/* Últimas Notícias / Eventos */}
+        {/* Últimas Notícias */}
+        {news.length > 0 && (
         <div className="space-y-16">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-primary font-bold uppercase tracking-widest text-sm">
                 <Newspaper size={18} />
-                {language === 'pt' ? 'Novidades' : 'Updates'}
+                {t('home.news.title')}
+              </div>
+              <h2 className="text-4xl md:text-6xl font-bold">
+                {language === 'pt' ? 'O que está rolando' : "What's happening"}
+              </h2>
+            </div>
+          </div>
+
+
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {news.map((item) => {
+              const content = item.translations[language as 'pt' | 'en'] || item.translations.pt;
+              const isExternal = item.link?.startsWith('http');
+              const CardContent = (
+                <>
+                  <div className="absolute inset-0">
+                    <img 
+                      src={item.image} 
+                      alt={content.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                  </div>
+                  <div className="absolute top-6 left-6">
+                    <span className="bg-primary/20 backdrop-blur-md text-primary border border-primary/30 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                      {content.category}
+                    </span>
+                  </div>
+                  <div className="absolute bottom-0 left-0 p-10 text-white space-y-4">
+                    <h3 className="text-3xl font-bold">{content.title}</h3>
+                    <p className="opacity-80 line-clamp-2 max-w-md">
+                      {content.description}
+                    </p>
+                    <div className="flex items-center gap-2 text-primary font-bold group-hover:gap-3 transition-all">
+                      {t('home.news.cta')}
+                      <ArrowRight size={20} />
+                    </div>
+                  </div>
+                </>
+              )
+
+              return isExternal ? (
+                <a 
+                  key={item.id}
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative h-[400px] rounded-[2.5rem] overflow-hidden border border-border/50 shadow-2xl transition-all hover:scale-[1.02] duration-500"
+                >
+                  {CardContent}
+                </a>
+              ) : (
+                <Link 
+                  key={item.id}
+                  to={item.link || '#'}
+                  className="group relative h-[400px] rounded-[2.5rem] overflow-hidden border border-border/50 shadow-2xl transition-all hover:scale-[1.02] duration-500"
+                >
+                  {CardContent}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+        )}
+
+        {/* Histórico de Eventos */}
+        <div className="space-y-16">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 text-primary font-bold uppercase tracking-widest text-sm">
+                <Star size={18} />
+                {language === 'pt' ? 'Histórico' : 'History'}
               </div>
               <h2 className="text-4xl md:text-6xl font-bold">{t('home.past.title')}</h2>
             </div>
@@ -140,6 +216,39 @@ export const Home: React.FC = () => {
                 </Link>
               );
             })}
+          </div>
+        </div>
+
+        {/* Discord Section */}
+        <div className="relative overflow-hidden rounded-[3rem] bg-[#5865F2] p-8 md:p-16 text-white border border-white/10">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 blur-[120px] -mr-48 -mt-48 rounded-full" />
+          <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider">
+                <MessageCircle size={20} />
+                Community
+              </div>
+              <h2 className="text-4xl md:text-6xl font-bold leading-tight">
+                {t('home.discord.title')}
+              </h2>
+              <p className="text-xl md:text-2xl opacity-90 leading-relaxed">
+                {t('home.discord.p1')}
+              </p>
+              <a 
+                href={configUrl.discordUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-3 bg-white text-[#5865F2] px-10 py-5 rounded-full font-bold text-xl hover:scale-105 transition-all shadow-2xl"
+              >
+                {t('home.discord.cta')}
+                <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform" />
+              </a>
+            </div>
+            <div className="hidden md:flex justify-center items-center">
+               <div className="w-64 h-64 bg-white/10 rounded-full flex items-center justify-center animate-pulse-slow">
+                 <MessageCircle size={120} className="text-white" />
+               </div>
+            </div>
           </div>
         </div>
 
