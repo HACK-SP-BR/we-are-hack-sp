@@ -46,12 +46,12 @@ export const events: Record<string, EventInfo> = {
     websiteUrl: 'https://daydream.hackclub.com/sao-paulo',
     translations: {
       pt: {
-        date: 'Setembro de 2025',
+        date: '27 de Setembro de 2025',
         location: 'IME-USP, São Paulo',
         description: 'Em parceria com USPCodeLab e Hack Club, fizemos o Daydream São Paulo, parte de uma rede de hackathons simultâneos ao redor do globo. Recebemos João Terra (Fundação Estudar) e Rodrigo Terron.',
       },
       en: {
-        date: 'September 2025',
+        date: 'September 27, 2025',
         location: 'IME-USP, São Paulo',
         description: 'In partnership with USPCodeLab and Hack Club, we organized Daydream São Paulo, part of a network of simultaneous hackathons around the globe. We hosted João Terra (Fundação Estudar) and Rodrigo Terron.',
       }
@@ -71,27 +71,30 @@ export const events: Record<string, EventInfo> = {
   },
   drx: {
     id: 'drx',
-    status: 'upcoming',
+    status: 'past',
     name: 'DRX by Hack SP',
-    registrationUrl: 'https://hacksp.fillout.com/drx',
-    bannerUrl: drx_banner,
     googleMapsUrl:
       'https://www.google.com/maps/search/?api=1&query=Taqtile%20Sumar%C3%A9%20S%C3%A3o%20Paulo%20SP',
     translations: {
       pt: {
-        date: '28 de Fevereiro',
+        date: '28 de Fevereiro de 2026',
         location: 'Taqtile — Sumaré, São Paulo, SP',
         locationDescription: 'Local: Taqtile, no bairro Sumaré (São Paulo, SP).',
         description:
           'Em parceria com Dr. Consulta, Hack SP lança seu novo hackathon para adolescentes: DRX. Nosso próximo grande evento está chegando! Prepare-se para 12 horas de pura criação, aprendizado e pizzas.',
       },
       en: {
-        date: 'February 28th',
-        location: 'Taqtile — Sumaré, São Paulo, Brazil',
+        date: 'February 28th, 2026',
+        location: 'Taqtile - Sumaré, São Paulo, Brazil',
         locationDescription: 'Venue: Taqtile, in the Sumaré neighborhood (São Paulo).',
         description:
           'In partnership with Dr. Consulta, Hack SP launches its new hackathon for teenagers: DRX. Our next big event is coming soon! Get ready for 12 hours of pure creation, learning, and pizza.',
       },
+    },
+    stats: {
+      participants: '25+',
+      projects: '7',
+      duration: '12h'
     },
     photos: [],
   },
