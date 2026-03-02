@@ -4,6 +4,13 @@ import daydream_event3 from '../assets/events/daydream-sp/event3.jpeg';
 import daydream_event4 from '../assets/events/daydream-sp/event4.jpeg';
 import daydream_event5 from '../assets/events/daydream-sp/event5.jpeg';
 
+// drx
+import drx_event1 from '../assets/events/drx_hacksp/event1.jpeg';
+import drx_event2 from '../assets/events/drx_hacksp/event2.jpeg';
+import drx_event3 from '../assets/events/drx_hacksp/event3.jpeg';
+import drx_event4 from '../assets/events/drx_hacksp/event4.jpeg';
+import drx_banner from '../assets/events/drx_hacksp/drx_banner.jpg';
+
 export interface EventInfo {
   id: string;
   status: 'upcoming' | 'past';
@@ -72,6 +79,7 @@ export const events: Record<string, EventInfo> = {
     id: 'drx',
     status: 'past',
     name: 'DRX by Hack SP',
+    bannerUrl: drx_banner,
     googleMapsUrl:
       'https://www.google.com/maps/search/?api=1&query=Taqtile%20Sumar%C3%A9%20S%C3%A3o%20Paulo%20SP',
     translations: {
@@ -95,6 +103,11 @@ export const events: Record<string, EventInfo> = {
       projects: '7',
       duration: '12h'
     },
-    photos: [],
+    photos: [
+        drx_event1,
+        drx_event2,
+        drx_event3,
+        drx_event4
+    ],
   },
 };
