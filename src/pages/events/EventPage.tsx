@@ -140,7 +140,10 @@ export const EventPage: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <h2 className="text-5xl font-bold leading-tight">
-                {language === 'pt' ? 'Estamos te esperando nesse endereço' : "We're waiting for you at this address"}
+                {event.status === 'past' 
+                  ? (language === 'pt' ? 'O evento aconteceu nesse endereço' : 'The event took place at this address')
+                  : (language === 'pt' ? 'Estamos te esperando nesse endereço' : "We're waiting for you at this address")
+                }
               </h2>
               
               {content.locationDescription && (
