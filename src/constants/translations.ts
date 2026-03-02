@@ -79,6 +79,11 @@ export const translations = {
     "hackathons.p": "Nossa missão é proporcionar experiências incríveis de hackathons para adolescentes em São Paulo. Confira nossos eventos abaixo.",
     "hackathons.noUpcoming": "Nenhum evento programado no momento. Fique ligado!",
     "event.location.title": "Sobre o Local",
+    "home.discord.title": "Comunidade no Discord",
+    "home.discord.p1": "Nosso servidor é o lugar para tirar dúvidas, encontrar seu time e conversar com outros apaixonados por tecnologia.",
+    "home.discord.cta": "Entrar no Servidor",
+    "home.news.title": "Últimas Notícias",
+    "home.news.cta": "Ler mais",
   },
   en: {
     "nav.hackathons": "Hackathons",
@@ -161,6 +166,11 @@ export const translations = {
     "hackathons.p": "Our mission is to provide incredible hackathon experiences for teenagers in São Paulo. Check out our events below.",
     "hackathons.noUpcoming": "No events scheduled at the moment. Stay tuned!",
     "event.location.title": "About the Location",
+    "home.discord.title": "Discord Community",
+    "home.discord.p1": "Our server is the place to ask questions, find your team, and chat with other technology enthusiasts.",
+    "home.discord.cta": "Join Server",
+    "home.news.title": "Latest News",
+    "home.news.cta": "Read more",
   },
 } as const;
 
