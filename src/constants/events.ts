@@ -3,7 +3,6 @@ import daydream_event2 from '../assets/events/daydream-sp/event2.jpeg';
 import daydream_event3 from '../assets/events/daydream-sp/event3.jpeg';
 import daydream_event4 from '../assets/events/daydream-sp/event4.jpeg';
 import daydream_event5 from '../assets/events/daydream-sp/event5.jpeg';
-import drx_banner from '../assets/events/drx_hacksp/drx_banner.jpg';
 
 export interface EventInfo {
   id: string;
