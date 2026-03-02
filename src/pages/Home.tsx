@@ -5,7 +5,6 @@ import { ArrowRight, Code2, Users, Rocket, Zap, BookOpen, MessageSquare, Present
 import { Link } from 'react-router-dom';
 import { events } from '../constants/events';
 import { news } from '../constants/news';
-import {config} from "typescript-eslint";
 import {configUrl} from "../config/config.ts";
 
 export const Home: React.FC = () => {
