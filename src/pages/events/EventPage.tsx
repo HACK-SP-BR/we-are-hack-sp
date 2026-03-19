@@ -1,23 +1,73 @@
 import React from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { useLanguage } from '../../contexts/LanguageContext';
-import { PlayCircle, Globe, Users, Trophy, Calendar, MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
-import { events } from '../../constants/events';
+import {
+  PlayCircle,
+  Globe,
+  Users,
+  Trophy,
+  Calendar,
+  MapPin,
+  ChevronLeft,
+  ChevronRight
+} from 'lucide-react';
+import { fetchEvents, type EventInfo, type EventsMap } from '../../constants/events';
 
 export const EventPage: React.FC = () => {
   const { eventId } = useParams<{ eventId: string }>();
   const { t, language } = useLanguage();
-  
-  const event = Object.values(events).find(e => e.id === eventId);
-  
+
+  const [events, setEvents] = React.useState<EventsMap | null>(null);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState<string | null>(null);
+
   const [currentPhotoIndex, setCurrentPhotoIndex] = React.useState(0);
   const [currentLocationPhotoIndex, setCurrentLocationPhotoIndex] = React.useState(0);
 
-  if (!event) {
+  React.useEffect(() => {
+    const loadEvents = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const data = await fetchEvents();
+        setEvents(data);
+      } catch (err) {
+        console.error(err);
+        setError('Failed to load events');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadEvents();
+  }, []);
+
+  const event: EventInfo | undefined = React.useMemo(() => {
+    if (!events || !eventId) return undefined;
+    return Object.values(events).find((e) => e.id === eventId);
+  }, [events, eventId]);
+
+  React.useEffect(() => {
+    setCurrentPhotoIndex(0);
+    setCurrentLocationPhotoIndex(0);
+  }, [eventId]);
+
+  if (loading) {
+    return (
+      <div className="max-w-5xl mx-auto py-12 px-4 md:px-0">
+        <div className="text-center text-xl opacity-70">
+          {language === 'pt' ? 'Carregando evento...' : 'Loading event...'}
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !events || !event) {
     return <Navigate to="/hackathons" replace />;
   }
 
   const content = event.translations[language as 'pt' | 'en'] || event.translations.pt;
+  const locationPhotos = event.locationPhotos ?? [];
 
   const nextPhoto = () => {
     setCurrentPhotoIndex((prev) => (prev + 1) % event.photos.length);
@@ -28,14 +78,14 @@ export const EventPage: React.FC = () => {
   };
 
   const nextLocationPhoto = () => {
-    if (event.locationPhotos) {
-      setCurrentLocationPhotoIndex((prev) => (prev + 1) % event.locationPhotos!.length);
+    if (locationPhotos.length > 0) {
+      setCurrentLocationPhotoIndex((prev) => (prev + 1) % locationPhotos.length);
     }
   };
 
   const prevLocationPhoto = () => {
-    if (event.locationPhotos) {
-      setCurrentLocationPhotoIndex((prev) => (prev - 1 + event.locationPhotos!.length) % event.locationPhotos!.length);
+    if (locationPhotos.length > 0) {
+      setCurrentLocationPhotoIndex((prev) => (prev - 1 + locationPhotos.length) % locationPhotos.length);
     }
   };
 
@@ -44,27 +94,29 @@ export const EventPage: React.FC = () => {
       <section className="space-y-12">
         {event.bannerUrl && (
           <div className="w-full rounded-[2rem] overflow-hidden border border-border shadow-2xl bg-foreground/[0.02]">
-            <img 
-              src={event.bannerUrl} 
-              alt={`Banner ${event.name}`} 
+            <img
+              src={event.bannerUrl}
+              alt={`Banner ${event.name}`}
               className="w-full h-auto block"
             />
           </div>
         )}
-        
+
         <div className="text-center space-y-8">
           <h1 className="text-7xl font-bold">{event.name}</h1>
+
           <div className="flex flex-col items-center gap-4 text-xl opacity-80">
             <div className="flex items-center gap-2">
               <Calendar size={20} className="text-primary" />
               <span>{content.date}</span>
             </div>
+
             <div className="flex items-center gap-2">
               <MapPin size={20} className="text-primary" />
               {event.googleMapsUrl ? (
-                <a 
-                  href={event.googleMapsUrl} 
-                  target="_blank" 
+                <a
+                  href={event.googleMapsUrl}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-primary transition-colors underline decoration-primary/30 underline-offset-4"
                 >
@@ -75,14 +127,14 @@ export const EventPage: React.FC = () => {
               )}
             </div>
           </div>
-          <p className="text-2xl opacity-70 max-w-3xl mx-auto">
-            {content.description}
-          </p>
+
+          <p className="text-2xl opacity-70 max-w-3xl mx-auto">{content.description}</p>
+
           <div className="flex justify-center flex-wrap gap-6">
             {event.videoUrl && (
-              <a 
+              <a
                 href={event.videoUrl}
-                target="_blank" 
+                target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-full font-bold text-xl hover:scale-105 transition-transform shadow-lg shadow-primary/20"
               >
@@ -90,10 +142,11 @@ export const EventPage: React.FC = () => {
                 Mini Doc
               </a>
             )}
+
             {event.websiteUrl && (
-              <a 
+              <a
                 href={event.websiteUrl}
-                target="_blank" 
+                target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 bg-foreground/5 border border-border px-8 py-4 rounded-full font-bold text-xl hover:bg-foreground/10 transition-all"
               >
@@ -101,8 +154,9 @@ export const EventPage: React.FC = () => {
                 Website
               </a>
             )}
+
             {event.status === 'upcoming' && event.registrationUrl && (
-              <a 
+              <a
                 href={event.registrationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -122,11 +176,13 @@ export const EventPage: React.FC = () => {
             <h3 className="text-4xl font-bold mb-2">{event.stats.participants}</h3>
             <p className="opacity-60">{t('hackathons.past.participants')}</p>
           </div>
+
           <div className="bg-background/60 dark:bg-background/40 backdrop-blur-md p-8 rounded-3xl border border-border/50 text-center shadow-xl shadow-black/5 dark:shadow-white/5 transition-transform hover:scale-105">
             <Trophy size={40} className="text-primary mx-auto mb-4" />
             <h3 className="text-4xl font-bold mb-2">{event.stats.projects}</h3>
             <p className="opacity-60">{t('hackathons.past.projects')}</p>
           </div>
+
           <div className="bg-background/60 dark:bg-background/40 backdrop-blur-md p-8 rounded-3xl border border-border/50 text-center shadow-xl shadow-black/5 dark:shadow-white/5 transition-transform hover:scale-105">
             <div className="text-4xl font-bold text-primary mb-4">{event.stats.duration}</div>
             <h3 className="text-4xl font-bold mb-2">1</h3>
@@ -135,17 +191,20 @@ export const EventPage: React.FC = () => {
         </div>
       )}
 
-      {(content.locationDescription || (event.locationPhotos && event.locationPhotos.length > 0) || event.googleMapsUrl) && (
+      {(content.locationDescription || locationPhotos.length > 0 || event.googleMapsUrl) && (
         <section className="space-y-12">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <h2 className="text-5xl font-bold leading-tight">
-                {event.status === 'past' 
-                  ? (language === 'pt' ? 'O evento aconteceu nesse endereço' : 'The event took place at this address')
-                  : (language === 'pt' ? 'Estamos te esperando nesse endereço' : "We're waiting for you at this address")
-                }
+                {event.status === 'past'
+                  ? language === 'pt'
+                    ? 'O evento aconteceu nesse endereço'
+                    : 'The event took place at this address'
+                  : language === 'pt'
+                    ? 'Estamos te esperando nesse endereço'
+                    : "We're waiting for you at this address"}
               </h2>
-              
+
               {content.locationDescription && (
                 <p className="text-2xl opacity-70 leading-relaxed italic border-l-4 border-primary/30 pl-4">
                   {content.locationDescription}
@@ -153,7 +212,7 @@ export const EventPage: React.FC = () => {
               )}
 
               {event.googleMapsUrl && (
-                <a 
+                <a
                   href={event.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -164,7 +223,7 @@ export const EventPage: React.FC = () => {
                 </a>
               )}
             </div>
-            
+
             <div className="space-y-8">
               {event.googleMapsUrl && (
                 <div className="w-full aspect-[4/3] rounded-[2rem] overflow-hidden border border-border shadow-2xl bg-foreground/5">
@@ -173,24 +232,25 @@ export const EventPage: React.FC = () => {
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
-                    src={`https://www.google.com/maps?q=${encodeURIComponent(event.googleMapsUrl.split('query=')[1] || content.location)}&output=embed`}
+                    src={`https://www.google.com/maps?q=${encodeURIComponent(
+                      event.googleMapsUrl.split('query=')[1] || content.location
+                    )}&output=embed`}
                     allowFullScreen
-                  ></iframe>
+                  />
                 </div>
               )}
-              
-              {event.locationPhotos && event.locationPhotos.length > 0 && (
+
+              {locationPhotos.length > 0 && (
                 <div className="relative group aspect-[4/3] overflow-hidden rounded-[2rem] border border-border bg-foreground/5 shadow-2xl">
-                  {event.locationPhotos.map((photo, index) => (
+                  {locationPhotos.map((photo, index) => (
                     <div
                       key={index}
-                      className={`absolute inset-0 transition-all duration-700 ease-in-out transform ${
-                        index === currentLocationPhotoIndex 
-                          ? 'opacity-100 scale-100 translate-x-0' 
-                          : index < currentLocationPhotoIndex 
-                            ? 'opacity-0 scale-95 -translate-x-full' 
+                      className={`absolute inset-0 transition-all duration-700 ease-in-out transform ${index === currentLocationPhotoIndex
+                          ? 'opacity-100 scale-100 translate-x-0'
+                          : index < currentLocationPhotoIndex
+                            ? 'opacity-0 scale-95 -translate-x-full'
                             : 'opacity-0 scale-95 translate-x-full'
-                      }`}
+                        }`}
                     >
                       <img
                         src={photo}
@@ -200,17 +260,20 @@ export const EventPage: React.FC = () => {
                     </div>
                   ))}
 
-                  {event.locationPhotos.length > 1 && (
+                  {locationPhotos.length > 1 && (
                     <>
                       <button
                         onClick={prevLocationPhoto}
                         className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/20 backdrop-blur-md border border-white/10 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background/40"
+                        aria-label="Previous location photo"
                       >
                         <ChevronLeft size={24} />
                       </button>
+
                       <button
                         onClick={nextLocationPhoto}
                         className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/20 backdrop-blur-md border border-white/10 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background/40"
+                        aria-label="Next location photo"
                       >
                         <ChevronRight size={24} />
                       </button>
@@ -225,19 +288,20 @@ export const EventPage: React.FC = () => {
 
       {event.photos.length > 0 && (
         <section className="space-y-12">
-          <h2 className="text-4xl font-bold border-b border-border pb-4">{t('event.photos.title')}</h2>
-          
+          <h2 className="text-4xl font-bold border-b border-border pb-4">
+            {t('event.photos.title')}
+          </h2>
+
           <div className="relative group max-w-4xl mx-auto h-[400px] md:h-[600px] overflow-hidden rounded-[2rem] border border-border bg-foreground/5 shadow-2xl">
             {event.photos.map((photo, index) => (
               <div
                 key={index}
-                className={`absolute inset-0 transition-all duration-700 ease-in-out transform ${
-                  index === currentPhotoIndex 
-                    ? 'opacity-100 scale-100 translate-x-0' 
-                    : index < currentPhotoIndex 
-                      ? 'opacity-0 scale-95 -translate-x-full' 
+                className={`absolute inset-0 transition-all duration-700 ease-in-out transform ${index === currentPhotoIndex
+                    ? 'opacity-100 scale-100 translate-x-0'
+                    : index < currentPhotoIndex
+                      ? 'opacity-0 scale-95 -translate-x-full'
                       : 'opacity-0 scale-95 translate-x-full'
-                }`}
+                  }`}
               >
                 <img
                   src={photo}
@@ -250,7 +314,6 @@ export const EventPage: React.FC = () => {
 
             {event.photos.length > 1 && (
               <>
-                {/* Navigation Buttons */}
                 <button
                   onClick={prevPhoto}
                   className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-background/20 backdrop-blur-md border border-white/10 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background/40"
@@ -258,6 +321,7 @@ export const EventPage: React.FC = () => {
                 >
                   <ChevronLeft size={32} />
                 </button>
+
                 <button
                   onClick={nextPhoto}
                   className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-background/20 backdrop-blur-md border border-white/10 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background/40"
@@ -266,15 +330,13 @@ export const EventPage: React.FC = () => {
                   <ChevronRight size={32} />
                 </button>
 
-                {/* Indicators */}
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
                   {event.photos.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentPhotoIndex(index)}
-                      className={`w-2 h-2 rounded-full transition-all ${
-                        index === currentPhotoIndex ? 'bg-white w-6' : 'bg-white/30'
-                      }`}
+                      className={`w-2 h-2 rounded-full transition-all ${index === currentPhotoIndex ? 'bg-white w-6' : 'bg-white/30'
+                        }`}
                       aria-label={`Go to photo ${index + 1}`}
                     />
                   ))}
