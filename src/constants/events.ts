@@ -33,7 +33,7 @@ export interface EventInfo {
 export type EventsMap = Record<string, EventInfo>;
 
 const EVENTS_CDN_URL =
-  'https://raw.githubusercontent.com/HACK-SP-BR/hacksp-events/main/events.json';
+  'https://raw.githubusercontent.com/HACK-SP-BR/events/main/events.json';
 
 export async function fetchEvents(): Promise<EventsMap> {
   const response = await fetch(`${EVENTS_CDN_URL}?v=${Date.now()}`);
