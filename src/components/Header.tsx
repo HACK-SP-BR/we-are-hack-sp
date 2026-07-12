@@ -43,14 +43,12 @@ export const Header: React.FC = () => {
               {link.label}
             </Link>
           ))}
-          <a 
-            href={configUrl.joinUrl}
-            target="_blank" 
-            rel="noopener noreferrer"
+          <Link
+            to="/join"
             className="bg-primary text-white px-5 py-2 rounded-full font-bold text-sm hover:scale-105 transition-transform"
           >
             {t('nav.join')}
-          </a>
+          </Link>
         </nav>
 
         <div className="flex items-center gap-4 md:gap-6">
@@ -97,16 +95,14 @@ export const Header: React.FC = () => {
               {link.label}
             </Link>
           ))}
-          <a 
-            href={configUrl.joinUrl}
-            target="_blank" 
-            rel="noopener noreferrer"
+          <Link
+            to="/join"
             className="bg-primary text-white px-5 py-3 rounded-xl font-bold text-center animate-in fade-in slide-in-from-left-4 fill-mode-both"
             style={{ animationDelay: `${navLinks.length * 50}ms` }}
             onClick={() => setIsMenuOpen(false)}
           >
             {t('nav.join')}
-          </a>
+          </Link>
           
           <div className="flex items-center justify-between pt-4 border-t border-border animate-in fade-in duration-500 delay-200">
             <div className="flex gap-6">

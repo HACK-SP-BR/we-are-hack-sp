@@ -7,6 +7,7 @@ import { Transparency } from '../pages/Transparency';
 import { Support } from '../pages/Support';
 import { FAQ } from '../pages/FAQ';
 import { EventPage } from '../pages/events/EventPage';
+import { Join } from '../pages/Join';
 
 export const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
       {
         path: 'faq',
         element: <FAQ />,
+      },
+      {
+        path: 'join',
+        element: <Join />,
       },
       {
         path: ':eventId',

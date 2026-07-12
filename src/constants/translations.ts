@@ -84,6 +84,21 @@ export const translations = {
     "home.discord.cta": "Entrar no Servidor",
     "home.news.title": "Últimas Notícias",
     "home.news.cta": "Ler mais",
+
+    "join.title": "Inscreva-se",
+    "join.subtitle": "Preencha seus dados para participar dos próximos hackathons do Hack SP.",
+    "join.form.name": "Nome completo",
+    "join.form.namePlaceholder": "Seu nome completo",
+    "join.form.email": "E-mail",
+    "join.form.emailPlaceholder": "seu@email.com",
+    "join.form.uf": "Estado (UF)",
+    "join.form.ufPlaceholder": "Selecione seu estado",
+    "join.form.birthDate": "Data de nascimento",
+    "join.form.submit": "Inscrever-se",
+    "join.form.submitting": "Enviando...",
+    "join.success.title": "Inscrição confirmada!",
+    "join.success.message": "Recebemos seus dados. Em breve entraremos em contato com novidades sobre os próximos hackathons.",
+    "join.error": "Não foi possível enviar sua inscrição. Tente novamente em instantes."
   },
   en: {
     "nav.hackathons": "Hackathons",
@@ -171,6 +186,21 @@ export const translations = {
     "home.discord.cta": "Join Server",
     "home.news.title": "Latest News",
     "home.news.cta": "Read more",
+
+    "join.title": "Join us",
+    "join.subtitle": "Fill in your details to take part in upcoming Hack SP hackathons.",
+    "join.form.name": "Full name",
+    "join.form.namePlaceholder": "Your full name",
+    "join.form.email": "Email",
+    "join.form.emailPlaceholder": "you@email.com",
+    "join.form.uf": "State (UF)",
+    "join.form.ufPlaceholder": "Select your state",
+    "join.form.birthDate": "Date of birth",
+    "join.form.submit": "Sign up",
+    "join.form.submitting": "Sending...",
+    "join.success.title": "Signup confirmed!",
+    "join.success.message": "We've received your details. We'll be in touch soon with news about upcoming hackathons.",
+    "join.error": "We couldn't submit your signup. Please try again in a moment."
   },
 } as const;
 
