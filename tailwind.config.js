@@ -13,6 +13,7 @@ export default {
         primary: 'var(--primary)',
         secondary: 'var(--secondary)',
         border: 'var(--border)',
+        card: 'var(--card)',
       },
       animation: {
         'pulse-slow': 'pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -27,4 +28,3 @@ export default {
   },
   plugins: [],
 }
-

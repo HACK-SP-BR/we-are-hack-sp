@@ -3,7 +3,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { brazilianStates } from '../constants/states';
 import { Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 
-const SUBSCRIBE_ENDPOINT = 'https://hacksp-backend.vercel.app/api/subscribers';
+const SUBSCRIBE_ENDPOINT = import.meta.env.VITE_SUBSCRIBE_ENDPOINT;
 
 export const Join: React.FC = () => {
   const { t } = useLanguage();
@@ -56,7 +56,7 @@ export const Join: React.FC = () => {
       ) : (
         <form
           onSubmit={handleSubmit}
-          className="bg-foreground/[0.03] border border-border p-8 md:p-10 rounded-[2.5rem] space-y-6"
+          className="bg-card border border-border p-8 md:p-10 rounded-[2.5rem] space-y-6"
         >
           <div>
             <label htmlFor="fullName" className={labelClasses}>{t('join.form.name')}</label>
