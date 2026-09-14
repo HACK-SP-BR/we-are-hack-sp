@@ -7,6 +7,7 @@ import { Safeguarding } from '../pages/Safeguarding';
 import { Hackathons } from '../pages/Hackathons';
 import { Join } from '../pages/Join';
 import Volunteer from '../pages/Volunteer';
+import { Unsubscribe } from '../pages/Unsubscribe';
 
 /**
  * The redesign is one page plus three documents. Transparency, Support, FAQ and
@@ -32,6 +33,8 @@ export const router = createBrowserRouter([
       { path: 'terms', element: <Terms /> },
       { path: 'safeguarding', element: <Safeguarding /> },
       { path: 'volunteer', element: <Volunteer /> },
+      // Aberta pelo link das campanhas; não aparece em menu nenhum.
+      { path: 'unsubscribe', element: <Unsubscribe /> },
     ],
   },
 ]);

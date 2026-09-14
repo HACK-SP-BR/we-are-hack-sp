@@ -1,5 +1,19 @@
 export const translations = {
   pt: {
+    "unsubscribe.eyebrow": "Lista de e-mails",
+    "unsubscribe.loading": "Verificando o link…",
+    "unsubscribe.confirmTitle": "Quer parar de receber nossos e-mails?",
+    "unsubscribe.confirmBody": "Você deixa de receber as novidades do Hack SP. Sua inscrição continua intacta: nada de eventos, crachás ou certificados se perde.",
+    "unsubscribe.confirmCta": "Sim, quero sair da lista",
+    "unsubscribe.doneTitle": "Pronto, você saiu da lista",
+    "unsubscribe.doneBody": "Não vamos mais te mandar novidades. Se foi sem querer, dá para voltar agora mesmo.",
+    "unsubscribe.undoCta": "Voltar a receber",
+    "unsubscribe.invalidTitle": "Esse link não funciona",
+    "unsubscribe.invalidBody": "Ele pode ter sido copiado pela metade. Abra o link direto do e-mail, ou escreva para {email} que a gente tira você da lista.",
+    "unsubscribe.failedTitle": "Não deu para concluir",
+    "unsubscribe.failedBody": "Algo falhou do nosso lado. Tente de novo em instantes.",
+    "unsubscribe.backHome": "← Voltar para o site",
+
     "join.heroTitle": "Inscreva-se nos hackathons do Hack SP",
     "join.heroLead": "Escolha seu perfil e preencha seus dados. Leva menos de dois minutos, e é de graça.",
     "join.step1": "Etapa 1 de 2",
@@ -321,6 +335,20 @@ export const translations = {
     "unsubscribe.test.message": "Era um link de teste, então a API não foi chamada. É exatamente esta a tela que a pessoa veria em um envio real."
   },
   en: {
+    "unsubscribe.eyebrow": "Mailing list",
+    "unsubscribe.loading": "Checking the link…",
+    "unsubscribe.confirmTitle": "Want to stop receiving our emails?",
+    "unsubscribe.confirmBody": "You'll stop getting Hack SP news. Your registration stays intact — no events, badges or certificates are lost.",
+    "unsubscribe.confirmCta": "Yes, take me off the list",
+    "unsubscribe.doneTitle": "Done, you're off the list",
+    "unsubscribe.doneBody": "We won't send you news any more. If that was a mistake, you can come back right now.",
+    "unsubscribe.undoCta": "Start receiving again",
+    "unsubscribe.invalidTitle": "This link doesn't work",
+    "unsubscribe.invalidBody": "It may have been copied incompletely. Open the link straight from the email, or write to {email} and we'll take you off the list.",
+    "unsubscribe.failedTitle": "We couldn't finish",
+    "unsubscribe.failedBody": "Something failed on our side. Please try again in a moment.",
+    "unsubscribe.backHome": "← Back to the site",
+
     "join.heroTitle": "Sign up for the Hack SP hackathons",
     "join.heroLead": "Pick your profile and fill in your details. It takes under two minutes, and it's free.",
     "join.step1": "Step 1 of 2",
