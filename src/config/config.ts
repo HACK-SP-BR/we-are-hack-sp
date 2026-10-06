@@ -10,7 +10,14 @@ export const configUrl = {
 const apiOrigin = new URL(import.meta.env.VITE_SUBSCRIBE_ENDPOINT).origin;
 
 export const apiUrl = {
-    unsubscribe: `${apiOrigin}/api/subscribers/unsubscribe`,
+    // Sair da lista pelo link da campanha. O `sig` que acompanha o id é
+    // assinado com um segredo próprio, separado do de inscrição — este link
+    // fica em caixas de entrada para sempre e não pode valer como sessão.
+    // GET lê o estado, POST tira da lista — mesma URL, verbos diferentes.
+    newsletter: (id: string, sig: string) =>
+        `${apiOrigin}/api/newsletter/${id}/unsubscribe?sig=${encodeURIComponent(sig)}`,
+    newsletterResubscribe: (id: string, sig: string) =>
+        `${apiOrigin}/api/newsletter/${id}/resubscribe?sig=${encodeURIComponent(sig)}`,
     registrations: `${apiOrigin}/api/registrations`,
     verifyEmail: (id: string) => `${apiOrigin}/api/registrations/${id}/verify-email`,
     resendCode: (id: string) => `${apiOrigin}/api/registrations/${id}/resend-code`,
