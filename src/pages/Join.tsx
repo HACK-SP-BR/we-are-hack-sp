@@ -158,6 +158,9 @@ export function Join() {
     if (status === 409) return 'register.error.duplicate';
     if (status === 422) return 'register.error.invalid';
     if (status === 429) return 'register.error.rateLimit';
+    // Só alcançável contra uma API anterior à mudança, que respondia 502 quando
+    // o e-mail falhava. Vale manter durante a janela de deploy: o site publica
+    // antes da API em alguns casos, e sem isto a pessoa veria "algo deu errado".
     if (status === 502) return 'register.error.emailFailed';
     return 'register.error.generic';
   };
@@ -188,21 +191,18 @@ export function Join() {
         body: JSON.stringify(payload),
       });
 
+      // A inscrição é gravada antes de o e-mail ser tentado, então a resposta é
+      // 201 nos dois casos e `email_delivered` conta se o código chegou a sair.
+      //
+      // Antes a falha vinha como 502, e isso não sobrevive à CDN: a Cloudflare
+      // trata 502 como "origem quebrou" e troca o corpo pela página de erro
+      // dela — levando junto o id e o sig, que são justamente o que permite
+      // continuar pelo reenvio em vez de preencher tudo de novo.
       if (response.ok) {
         const body = await response.json();
         startVerification({ id: body.id, sig: body.sig, email: payload.email, category });
+        if (body.email_delivered === false) setError(t('register.error.emailFailedRetry'));
         return;
-      }
-
-      // 502 means the row was saved but the email never left; the body carries
-      // id and sig so the person continues through resend instead of restarting.
-      if (response.status === 502) {
-        const body = await response.json().catch(() => null);
-        if (body?.id && body?.sig) {
-          startVerification({ id: body.id, sig: body.sig, email: payload.email, category });
-          setError(t('register.error.emailFailedRetry'));
-          return;
-        }
       }
 
       setError(t(errorKeyForStatus(response.status), { email: configUrl.contactEmail }));
